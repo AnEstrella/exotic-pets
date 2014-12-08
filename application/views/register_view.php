@@ -21,6 +21,7 @@
 					<ul>
 						<li>First Name: <input type='text' name='first_name'></li>
 						<li>Last Name: <input type='text' name='last_name'></li>
+						<li>Billing Address: <input type='text' name='billing_address'</li>
 						<li>Email: <input type='text' name='email'></li>
 						<li>Password: <input type='password' name='password'></li>
 						<li>Confirm Password: <input type='password' name='confirm_password'></li>

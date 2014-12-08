@@ -14,6 +14,7 @@ class Process extends CI_Controller {
 		$this->form_validation->set_rules("last_name", "Last Name", 'trim|required');
 		$this->form_validation->set_rules("password", "Password", 'trim|required|min_length[8]|matches[confirm_password]|md5');
 		$this->form_validation->set_rules("confirm_password", "Confirm Password", 'required');
+		$this->form_validation->set_rules("billing_address", "Billing Address", 'required');
 
 		if($this->form_validation->run() == FALSE)
 		{
@@ -24,15 +25,19 @@ class Process extends CI_Controller {
 		else
 		{
 			$this->load->model("customer");
-			$customer_details = array(
-			"first_name" => $this->input->post('first_name'),
-			"last_name" => $this->input->post('last_name'),
+			$customer_email = array(
 			"email" => $this->input->post('email'),
 			"password" => $this->input->post('password'),
 			"confirm_password" => $this->input->post('confirm_password')
 			);
-			$add_customer = $this->customer->add_customer($customer_details);
-				if($add_customer === TRUE)
+			$add_customer = $this->customer->add_customer($customer_email);
+			$customer_info = array(
+			"customer_id" => $add_customer,
+			"first_name" => $this->input->post('first_name'),
+			"last_name" => $this->input->post('last_name'),
+			"billing_address" => $this->input->post('billing_address'),
+			);
+			$add_customer_info = $this->customer->add_customer_info($customer_info);
 					redirect('/');
 		}
 
