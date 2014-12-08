@@ -32,7 +32,7 @@ class Process extends CI_Controller {
 			"confirm_password" => $this->input->post('confirm_password')
 			);
 			$add_customer = $this->customer->add_customer($customer_details);
-				if($add_student === TRUE)
+				if($add_customer === TRUE)
 					redirect('/');
 		}
 
