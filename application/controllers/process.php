@@ -15,7 +15,6 @@ class Process extends CI_Controller {
 		$this->form_validation->set_rules("password", "Password", 'trim|required|min_length[8]|matches[confirm_password]|md5');
 		$this->form_validation->set_rules("confirm_password", "Confirm Password", 'required');
 		$this->form_validation->set_rules("billing_address", "Billing Address", 'required');
-
 		if($this->form_validation->run() == FALSE)
 		{
 			$this->view_data['errors'] = validation_errors();
@@ -40,7 +39,6 @@ class Process extends CI_Controller {
 			$add_customer_info = $this->customer->add_customer_info($customer_info);
 					redirect('/');
 		}
-
 	}
 }
 
