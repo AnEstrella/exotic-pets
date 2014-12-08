@@ -124,3 +124,83 @@
 	padding: 10px;
 	padding-right: 10px;
 }
+#register_navbar
+{
+background-color: black;
+}
+.container
+{
+	text-align: left;
+	background-color: grey;
+	margin-top: 20px;
+	width: 500px;
+	padding-bottom: 15px;
+	font-family: sans-serif;
+	padding: 0px;
+	outline: solid black;
+}
+.container h3
+{
+	display: inline-block;
+	margin-left: 100px;
+	margin:0px;
+	margin-left: 100px;
+}
+#email
+{
+	margin-left: 69px;
+	margin-top: 15px;
+}
+#password
+{
+	margin-left: 20px;
+}
+h1
+{
+	text-align: center;
+	font-weight: bold;
+	padding-bottom: 20px;
+}
+#login_button
+{
+	margin-left: 315px;
+}
+ul
+{
+	list-style-type: none;
+	font-size: 18px;
+	font-family: sans-serif;
+	text-align: right;
+}
+#error_box
+{
+	background-color: red;
+	color: white;
+	text-align: center;
+	font-size: 18px;
+	width: 400px;
+	margin-left: 310px;
+	border-radius: 15px;
+	margin-top: 25px;
+}
+ul li
+{
+	margin: 10px;
+	margin-right: 20px;
+}
+ul li input
+{
+	font-size: 15px;
+	margin-left:20px;
+	margin-right: 100px;
+}
+
+#register_button
+{
+	margin-right: 125px;
+}
+#home_button
+{
+	margin-left: 600px;
+	font-family: courier;
+}
