@@ -39,6 +39,8 @@
 */
 
 $route['default_controller'] = "process";
+$route['register'] = "/process/register";
+$route['index'] = '/process/index';
 $route['404_override'] = '';
 
 
