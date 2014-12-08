@@ -24,14 +24,14 @@ class Process extends CI_Controller {
 		else
 		{
 			$this->load->model("customer");
-			$student_details = array(
+			$customer_details = array(
 			"first_name" => $this->input->post('first_name'),
 			"last_name" => $this->input->post('last_name'),
 			"email" => $this->input->post('email'),
 			"password" => $this->input->post('password'),
 			"confirm_password" => $this->input->post('confirm_password')
 			);
-			$add_student = $this->student_model->add_student($student_details);
+			$add_customer = $this->customer->add_customer($customer_details);
 				if($add_student === TRUE)
 					redirect('/');
 		}
