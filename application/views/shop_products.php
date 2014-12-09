@@ -8,6 +8,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <style>
+
 #categories{
 	border: 2px solid black;
 	margin-top: 63px;
@@ -17,15 +18,20 @@
 	vertical-align: top;
 	padding: 10px;
 }
+#categories span{
+	position: absolute;
+	top: 85px;
+	left: 220px;
+}
 #product-grid{
 	border: 2px solid black;
-	width: 900px;
+	max-width: 800px;
 	display: inline-block;
 	vertical-align: top;
 	margin-top: 63px;
 	margin-left: 10px;
 	padding-left: 20px;
-	height: 620px;
+	min-height: 620px;
 	position: relative;
 }
 #grid-header{
@@ -34,17 +40,30 @@
 }
 #grid-nav{
 	margin-right: 20px;
-	padding-top: 10px;
+	padding-top: 45px;
 }
 #product-images{
 	margin-top: 50px;
 }
-#product-images ul{
-	list-style-type: none;
+	#product-images ul{
+		list-style-type: none;
+	}
+	#product-images li{
+		display: inline-block;
+		padding: 5px;
 }
-#product-images li{
-	display: inline-block;
-	padding: 10px;
+.thumbnail-price{
+    background: none repeat scroll 0 0 #FFFFFF;
+    opacity: 0.5;
+    top:100;
+    left:60;
+    position: absolute;
+}
+.thumbnail{
+    position:relative;  
+    width: 120px;
+    height: 120px;
+    display: inline-block;
 }
 #grid-footer{
 	position: absolute;
@@ -73,8 +92,10 @@
     </nav>
 
 <div id="categories">
-	<input type="text" placeholder="product name"> 
-	<input type="submit" value="submit">
+	<form class="form-search form-inline">
+	<input type="search-query" placeholder="product name" class="form-control">
+	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+	</form>
 	<h4>Categories</h4>
 	<ul>
 		<li>Lions</li>
@@ -97,8 +118,8 @@
   </div>
   <div id="product-images">
     <ul>
-      <li><img src="#" height="120px" width="120px"><p>Item 1</p></li>
-      <li><img src="#" height="120px" width="120px"><p>Item 2</p></li>
+      <li><img src="http://upload.wikimedia.org/wikipedia/commons/7/76/120px-Single.png" height="120px" width="120px"><p>Item 1</p></li>
+      <li><img src="http://www.online-image-editor.com/styles/2013/images/example_image.png" height="120px" width="120px"><p>Item 2</p></li>
       <li><img src="#" height="120px" width="120px"><p>Item 3</p></li>
       <li><img src="#" height="120px" width="120px"><p>Item 4</p></li>
       <li><img src="#" height="120px" width="120px"><p>Item 5</p></li>
