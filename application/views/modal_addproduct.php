@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-  //    Edit Product Modal - Ecommerce Website Project - View Classes
+  //    Add Product Modal - Ecommerce Website Project - View Classes
 
 ?>
 <!DOCTYPE html>
@@ -12,7 +12,7 @@
     <meta name="description" content="ecommerce website project code igniter coding dojo">
     <meta name="author" content="exotic pets site">
 
-    <title>Edit Product - Exotic Pets</title>
+    <title>Add Product - Exotic Pets</title>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
@@ -40,7 +40,7 @@
 <body>
   <div class="container">
 
-  <h3>Edit Product (Modal)</h3>
+  <h3>Add Product (Modal)</h3>
 
   <!-- Edit Product modal content -->
   <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -49,7 +49,7 @@
 
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title" id="myModalLabel">Edit Product</h4>
+          <h4 class="modal-title" id="myModalLabel">Add Product</h4>
         </div>
         <div class="modal-body">
           <form role="form">
@@ -94,7 +94,7 @@
 
   <div class="bs-example" style="padding-bottom: 24px;">
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-      Edit Product
+      Add Product
     </button>
   </div><!-- /example -->
 
