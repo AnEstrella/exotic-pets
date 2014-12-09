@@ -27,7 +27,7 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
       
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="./assets/css/signin.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/signin.css">
 
   </head>
 
@@ -35,12 +35,12 @@
 
     <div class="container">
 
-      <form class="form-signin" role="form">
+      <form class="form-signin" role="form" method='post' action='/admin_login'>
         <h2 class="form-signin-heading">Admin Login</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name='email' required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name='password' required>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me

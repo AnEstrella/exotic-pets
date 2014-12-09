@@ -1,3 +1,4 @@
+
 .navbar-header h3
 {
 	margin-left: 25px;
@@ -18,7 +19,8 @@
 	}
 	#logoff_link
 	{
-		margin-left: 900px;
+		margin-left: 500px;
+		display: inline-block;
 	}
 #products_search
 {

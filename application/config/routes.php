@@ -41,6 +41,10 @@
 $route['default_controller'] = "process";
 $route['register'] = "/process/register";
 $route['index'] = '/process/index';
+$route['dashboard_orders'] = '/admin_controller/dashboard_orders';
+$route['signin'] = '/admin_controller/index';
+$route['admin_login'] = '/admin_controller/admin_login';
+$route['loadProducts'] = '/admin_controller/loadProducts';
 $route['404_override'] = '';
 
 

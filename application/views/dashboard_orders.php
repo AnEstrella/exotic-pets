@@ -1,8 +1,9 @@
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" type='text/css'href='/assets/css/bootstrap.css'>
-	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+	<link rel="stylesheet" type='text/css' href="/assets/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/admin_style.css">
+
 </head>
 <body>
 
@@ -11,7 +12,7 @@
 		<div class='navbar-header'>
 			<h3>Dashboard</h3>
       		<a href='#' id='orders_link'>Orders</a>
-      		<a href='#' id='products_link'>Products</a>
+      		<a href='/loadProducts' id='products_link'>Products</a>
       		<a href='#' id='logoff_link'>log off</a>
 		</div>
 	</div>

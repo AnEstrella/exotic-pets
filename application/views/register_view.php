@@ -2,7 +2,7 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" type='text/css'href='/assets/css/bootstrap.css'>
-	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/register_style.css">
 </head>
 <body>
 	<nav class='navbar-default' id='register_navbar' role='navigation'>
