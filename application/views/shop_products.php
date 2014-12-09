@@ -8,7 +8,6 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <style>
-
 #categories{
 	border: 2px solid black;
 	margin-top: 63px;
@@ -47,7 +46,7 @@
 	}
 	#grid-header-right ul{
 		display: inline-block;
-		padding-top: 45px;
+		padding-top: 47px;
 		list-style-type: none;
 	}
 	#grid-header-right li{
@@ -72,7 +71,17 @@
 		display: inline-block;
 		padding: 5px;
 		position: relative;
-}
+	}
+	#product-images img{
+		width: 120px;
+		height: 120px;
+	}
+	#product-images p{
+		max-width: 120px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
 .thumbnail-price{
     background: none repeat scroll 0 0 #FFFFFF;
     opacity: 0.5;
@@ -149,12 +158,24 @@
 
  	<div id="product-images">
 	    <ul>
-	      <li><img src="http://upload.wikimedia.org/wikipedia/commons/7/76/120px-Single.png" height="120px" width="120px">
+<?php 
+foreach(array_reverse($items) as $item) {?>
+		<li>
+			<img src="<?= $item['image_url'] ?>">
+			<span class="thumbnail-price"><?= $item['price'] ?></span>
+			<p><?= $item['name'] ?></p></li>
+		</li>
+<?}?>
+<!-- 
+	      <li>
+	      	<img src="http://upload.wikimedia.org/wikipedia/commons/7/76/120px-Single.png" height="120px" width="120px">
 	      	<span class="thumbnail-price">$1000.00</span>
-	      <p>Item 1</p></li>
-	      <li><img src="http://www.online-image-editor.com/styles/2013/images/example_image.png" height="120px" width="120px">
+	      	<p>Item 1</p></li>
+	      <li>
+	      	<img src="http://www.online-image-editor.com/styles/2013/images/example_image.png" height="120px" width="120px">
 	      	<span class="thumbnail-price">$200.00</span>
-	      	<p>Item 2</p></li>
+	      	<p>Item 2</p>
+	      </li>
 	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 3</p></li>
 	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 4</p></li>
 	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 5</p></li>
@@ -167,7 +188,7 @@
 	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 12</p></li>
 	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 13</p></li>
 	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 14</p></li>
-	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 15</p></li>
+	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 15</p></li> -->
 	    </ul>
   </div>
   <div id="grid-footer">

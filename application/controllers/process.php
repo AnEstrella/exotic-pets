@@ -4,7 +4,8 @@ class Process extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('dashboard_show');
+		$items = $this->Item->get_all_items(); 
+		$this->load->view('shop_products', array('items'=>$items));
 	}
 	public function register()
 	{
