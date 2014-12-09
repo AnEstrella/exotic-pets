@@ -4,7 +4,7 @@ class Process extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('register_view');
+		$this->load->view('shop_products');
 	}
 	public function register()
 	{
