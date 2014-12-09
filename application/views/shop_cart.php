@@ -157,7 +157,7 @@
       		<span class="input-group-addon">
         		<input type="checkbox">&nbsp;Billing Address Same as Shipping
       		</span>
-    	</div><!-- /input-group -->
+    	</div> <!-- /input-group for Billing/Shipping -->
     	<div class="row">
 	    	<h1>Billing Information</h1>
 	        <form role="form">
