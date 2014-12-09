@@ -4,7 +4,7 @@ class Process extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('dashboard_show');
+		$this->load->view('signin');
 	}
 	public function register()
 	{

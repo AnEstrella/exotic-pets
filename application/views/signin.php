@@ -14,29 +14,28 @@
 
     <title>Admin Login - Exotic Pets</title>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-    <!-- Bootstrap core CSS -->
-    <!-- Latest compiled and minified CSS -->
-  	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  	<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"> -->
 
-  	<!-- Optional theme -->
-  	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+  	<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"> -->
 
-  	<!-- Latest compiled and minified JavaScript -->
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-      
-    <!-- Custom styles for this template -->
+<link rel="stylesheet" type='text/css'href='/assets/css/bootstrap.css'>
     <link rel="stylesheet" type="text/css" href="../../assets/css/signin.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/admin_style.css">
 
   </head>
 
   <body>
-
+<nav class='navbar-default' role='navigation'>
+  <div class='container-fluid' id='admin_login_header_box'>
+    <div class='navbar-header'>
+      <h3 id='admin_login'>Admin Login</h3>
+    </div>
+  </div>
+</nav>
     <div class="container">
 
       <form class="form-signin" role="form" method='post' action='/admin_login'>
-        <h2 class="form-signin-heading">Admin Login</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name='email' required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
