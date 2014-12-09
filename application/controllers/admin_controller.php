@@ -32,6 +32,10 @@ class Admin_Controller extends CI_Controller {
 	{
 		$this->load->view('dashboard_products');
 	}
+	public function loadOrders()
+	{
+		$this->load->view('dashboard_orders');
+	}
 }
 
 /* End of file welcome.php */

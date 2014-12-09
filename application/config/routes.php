@@ -45,6 +45,7 @@ $route['dashboard_orders'] = '/admin_controller/dashboard_orders';
 $route['signin'] = '/admin_controller/index';
 $route['admin_login'] = '/admin_controller/admin_login';
 $route['loadProducts'] = '/admin_controller/loadProducts';
+$route['loadOrders'] = '/admin_controller/loadOrders';
 $route['404_override'] = '';
 
 
