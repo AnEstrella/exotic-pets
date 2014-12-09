@@ -7,6 +7,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+<<<<<<< HEAD
 class SignIn extends CI_Controller {
 
 <<<<HEAD
@@ -30,14 +31,12 @@ class SignIn extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+=======
+class SignIn extends CI_Controller
+{
+>>>>>>> 91273fafa2c6eb8419097d0110826e2c9dfc5359
 	public function index()
 	{
-		//die("index");
-		$this->load->view('signin');
+		$this->load->view('shop_cart');
 	}
-
->>>>>>> ffee6674f1682fcc6f112862c5b7e205531a0b60
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/Welcome.php */
