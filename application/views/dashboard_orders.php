@@ -22,6 +22,7 @@
 			<div class='col-lg-'>
 				<form method='post' action='/searchOrders'>
 					<input id='orders_search' type='text' placeholder='search'>
+					<input type='submit'>
 					<select id='order_status_dropdown'><option value='Show All'>Show All</option><option value='Order in process'>Order in process</option><option value='Shipped'>Shipped</option></select>
 				</form>
 			</div>
@@ -37,14 +38,18 @@
 					<th>Status</th>
 				</thead>
 				<tbody>
+<?php
+				foreach($orders as $order)
+{?>			
 					<tr>
-						<td><a href='#'>200</a></td>
-						<td>John Doe</td>
-						<td>12/5/2014</td>
-						<td>1234 Coding Dojo Lane, Bellevue, WA 98005</td>
-						<td>$100,000.99</td>
+						<td><a href='/viewOrder/<?=$order['order_id']?>'><?=$order['order_id']?></a></td>
+						<td><?=$order['first_name'] . " " . $order['last_name']?></td>
+						<td><?=$order['ordered_on']?></td>
+						<td><?=$order['billing_address'] . ", " . $order['city'] . ", " . $order['state'] . " " . $order['zip_code']?></td>
+						<td><?=$order['total_price']?></td>
 						<td><select><option value='Shipped'>Shipped</option><option value='Order in process'>Order in process</option><option value='Canceled'>Canceled</option></select></td>
 					</tr>
+<?php } ?>
 				</tbody>
 			</table>
 		</div>

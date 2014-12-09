@@ -46,6 +46,8 @@ $route['signin'] = '/admin_controller/index';
 $route['admin_login'] = '/admin_controller/admin_login';
 $route['loadProducts'] = '/admin_controller/loadProducts';
 $route['loadOrders'] = '/admin_controller/loadOrders';
+$route['searchOrders'] = '/admin_controller/searchOrders';
+$route['viewOrder/(:any)'] = '/admin_controller/viewOrder/$1';
 $route['404_override'] = '';
 
 

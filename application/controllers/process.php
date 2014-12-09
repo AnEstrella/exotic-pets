@@ -15,6 +15,9 @@ class Process extends CI_Controller {
 		$this->form_validation->set_rules("password", "Password", 'trim|required|min_length[8]|matches[confirm_password]|md5');
 		$this->form_validation->set_rules("confirm_password", "Confirm Password", 'required');
 		$this->form_validation->set_rules("billing_address", "Billing Address", 'required');
+		$this->form_validation->set_rules("city", "City", 'required');
+		$this->form_validation->set_rules("state", "State", 'required');
+		$this->form_validation->set_rules("zip_code", "Zip Code", 'required');
 		if($this->form_validation->run() == FALSE)
 		{
 			$this->view_data['errors'] = validation_errors();
