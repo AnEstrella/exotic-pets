@@ -4,8 +4,12 @@ class Process extends CI_Controller {
 
 	public function index()
 	{
+
 		$items = $this->Item->get_all_items(); 
 		$this->load->view('shop_products', array('items'=>$items));
+		//=======
+		//$this->load->view('signin');
+		//>>>>>>> 23ff019e5d8386126ffc396e59aea94288120601
 	}
 	public function register()
 	{

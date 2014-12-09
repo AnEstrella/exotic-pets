@@ -13,9 +13,21 @@
 	{
 		margin-left: 50px;
 	}
+	#orders_link_on_orders
+	{
+		margin-left: 50px;
+		font-weight:bold;
+		text-decoration: underline;
+	}
 	#products_link
 	{
 		margin-left: 50px;
+	}
+	#products_link_on_products
+	{
+		margin-left: 50px;
+		font-weight: bold;
+		text-decoration: underline;
 	}
 	#logoff_link
 	{
@@ -53,7 +65,7 @@
 	border-radius: 15px;
 	border:1px solid #2a2e31;
 	padding-left: 40px;
-	margin-left: 20px;
+	margin-left: 30px;
 }
 #table_row
 {
@@ -63,7 +75,7 @@
 }
 #order_status_dropdown
 {
-	margin-left: 535px;
+	margin-left: 525px;
 }
 #products_search
 {
@@ -76,10 +88,11 @@
 	border-radius: 15px;
 	border:1px solid #2a2e31;
 	padding-left: 40px;
+	margin-left: 30px;
 }
 #add_button
 {
-	margin-left: 350px;
+	margin-left: 310px;
 }
 .col-md-4
 {
