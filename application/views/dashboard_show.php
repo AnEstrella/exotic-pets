@@ -10,7 +10,7 @@
 	<div class='container-fluid'>
 		<div class='navbar-header'>
 			<h3>Dashboard</h3>
-      		<a href='/loadOrders' id='orders_link'>Orders</a>
+      		<a href='/' id='orders_link'>Orders</a>
       		<a href='/loadProducts' id='products_link'>Products</a>
       		<a href='#' id='logoff_link'>log off</a>
 		</div>
@@ -49,26 +49,24 @@
 						<th>Total</th>
 					</thead>
 					<tbody>
-<?php  
+<?php
 				foreach($order as $value)
 {?>
 					<tr>
 						<td><?=$value['id']?></td>
 						<td><?=$value['name']?></td>
-						<td><?=$value['price']?></td>
+						<td>$<?=$value['price']?></td>
 						<td><?=$value['quantity']?></td>
-						<td><?=$value['total_price']?></td>
+						<td>$<?=$value['price_before_shipping']?></td>
 					</tr>
-
 <?php } ?>
-
 					</tbody>
 				</table>
 				<p id='show_status'>Status: <?=$value['status']?></p>
 				<ul id='show_price_total'>
-					<li>Sub Total: <?=$value['total_price']?></li>
-					<li>Shipping: <?=$value['shipping_price']?></li>
-					<li>Total Price: </li>
+					<li>Sub Total: $<?=$value['price_before_shipping']?></li>
+					<li>Shipping: $<?=$value['shipping_price']?></li>
+					<li>Total Price: $<?=$value['price_after_shipping']?></li>
 				</ul>
 			</div>
 		</div>

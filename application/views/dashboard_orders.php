@@ -38,7 +38,7 @@
 					<th>Status</th>
 				</thead>
 				<tbody>
-<?php
+<?php 
 				foreach($orders as $order)
 {?>			
 					<tr>
