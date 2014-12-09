@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SignIn extends CI_Controller {
 
-<<<<<<< HEAD
+<<<<HEAD
 	public function index()
 	{
 		$this->load->view('signin');
