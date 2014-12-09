@@ -23,6 +23,9 @@
 	top: 85px;
 	left: 220px;
 }
+	#categories ul{
+		list-style-type: none;
+	}
 #product-grid{
 	border: 2px solid black;
 	max-width: 800px;
@@ -34,41 +37,56 @@
 	min-height: 620px;
 	position: relative;
 }
-#grid-header{
-	position: absolute;
-	display: inline-block;
-}
 #grid-nav{
 	margin-right: 20px;
-	padding-top: 45px;
+	height: 60px;
+}
+	#grid-header{
+		position: absolute;
+		display: inline-block;
+	}
+	#grid-header-right ul{
+		display: inline-block;
+		padding-top: 45px;
+		list-style-type: none;
+	}
+	#grid-header-right li{
+		display: inline-block;
+		padding-right: 20px;
+	}
+#sort-dropdown
+{
+	padding-right: 30px;
+	padding-top: 5px;
+	position: absolute;
+	right: 10px;
 }
 #product-images{
-	margin-top: 50px;
+	margin-top: 30px;
 }
 	#product-images ul{
 		list-style-type: none;
+		display: inline-block;
 	}
 	#product-images li{
 		display: inline-block;
 		padding: 5px;
+		position: relative;
 }
 .thumbnail-price{
     background: none repeat scroll 0 0 #FFFFFF;
     opacity: 0.5;
-    top:100;
-    left:60;
+    top:105;
+    left:6;
     position: absolute;
-}
-.thumbnail{
-    position:relative;  
-    width: 120px;
-    height: 120px;
-    display: inline-block;
+    width: 118px;
+    padding-left: 50px;
 }
 #grid-footer{
 	position: absolute;
 	bottom: 10px;
 } 
+
 </style>
 </head>
 <body>
@@ -98,42 +116,59 @@
 	</form>
 	<h4>Categories</h4>
 	<ul>
-		<li>Lions</li>
-		<li>Tigers</li>
-		<li>Bears</li>
+		<li>Lions (##)</li>
+		<li>Tigers (#)</li>
+		<li>Bears (##)</li>
 	</ul>
 </div>
 
 <div id="product-grid">
-  <div id="grid-header">
-  	<h2>Products (page #)</h2>
-  </div>
-  <div id="grid-nav">
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="shop_cart">first</a></li>
-      <li><a href="shop_cart">prev</a></li>
-      <li><a href="shop_cart">#</a></li>
-      <li><a href="shop_cart">next</a></li>
-    </ul>
-  </div>
-  <div id="product-images">
-    <ul>
-      <li><img src="http://upload.wikimedia.org/wikipedia/commons/7/76/120px-Single.png" height="120px" width="120px"><p>Item 1</p></li>
-      <li><img src="http://www.online-image-editor.com/styles/2013/images/example_image.png" height="120px" width="120px"><p>Item 2</p></li>
-      <li><img src="#" height="120px" width="120px"><p>Item 3</p></li>
-      <li><img src="#" height="120px" width="120px"><p>Item 4</p></li>
-      <li><img src="#" height="120px" width="120px"><p>Item 5</p></li>
-      <li><img src="#" height="120px" width="120px"><p>Item 6</p></li>
-      <li><img src="#" height="120px" width="120px"><p>Item 7</p></li>
-      <li><img src="#" height="120px" width="120px"><p>Item 8</p></li>
-      <li><img src="#" height="120px" width="120px"><p>Item 9</p></li>
-      <li><img src="#" height="120px" width="120px"><p>Item 10</p></li>
-      <li><img src="#" height="120px" width="120px"><p>Item 11</p></li>
-      <li><img src="#" height="120px" width="120px"><p>Item 12</p></li>
-      <li><img src="#" height="120px" width="120px"><p>Item 13</p></li>
-      <li><img src="#" height="120px" width="120px"><p>Item 14</p></li>
-      <li><img src="#" height="120px" width="120px"><p>Item 15</p></li>
-    </ul>
+	<div id="grid-nav">
+	  	<div id="grid-header">
+	  		<h2>Products (page #)</h2>
+	  	</div>
+	  	<div id="grid-header-right">
+		  	<ul class="navbar-right">
+		      <li><a href="shop_cart">first</a></li>
+		      <li><a href="shop_cart">prev</a></li>
+		      <li><a href="shop_cart">#</a></li>
+		      <li><a href="shop_cart">next</a></li>
+		    </ul>
+		</div>
+ 	</div>
+ 	<div id="sort-dropdown" class="navbar-right">
+ 		<p>
+	 		Sort By:
+	 		<select>
+	 			<option value="price">Price</option>
+	 			<option value="most popular">Most Popular</option>
+	 			<option value="name">Name</option>
+	 		</select>
+ 		</p>
+ 	</div>
+
+ 	<div id="product-images">
+	    <ul>
+	      <li><img src="http://upload.wikimedia.org/wikipedia/commons/7/76/120px-Single.png" height="120px" width="120px">
+	      	<span class="thumbnail-price">$1000.00</span>
+	      <p>Item 1</p></li>
+	      <li><img src="http://www.online-image-editor.com/styles/2013/images/example_image.png" height="120px" width="120px">
+	      	<span class="thumbnail-price">$200.00</span>
+	      	<p>Item 2</p></li>
+	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 3</p></li>
+	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 4</p></li>
+	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 5</p></li>
+	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 6</p></li>
+	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 7</p></li>
+	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 8</p></li>
+	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 9</p></li>
+	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 10</p></li>
+	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 11</p></li>
+	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 12</p></li>
+	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 13</p></li>
+	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 14</p></li>
+	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 15</p></li>
+	    </ul>
   </div>
   <div id="grid-footer">
     <ul class="nav navbar-nav">
@@ -141,6 +176,12 @@
       <li><a href="shop_cart">2</a></li>
       <li><a href="shop_cart">3</a></li>
       <li><a href="shop_cart">4</a></li>
+      <li><a href="shop_cart">5</a></li>
+      <li><a href="shop_cart">6</a></li>
+      <li><a href="shop_cart">7</a></li>
+      <li><a href="shop_cart">8</a></li>
+      <li><a href="shop_cart">9</a></li>
+      <li><a href="shop_cart">10</a></li>
     </ul>
   </div>
 </div>
