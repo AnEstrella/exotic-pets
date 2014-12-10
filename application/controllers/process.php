@@ -4,9 +4,10 @@ class Process extends CI_Controller {
 
 	public function index()
 	{
-
+		$this->load->model('Category');
 		$items = $this->Item->get_all_items(); 
-		$this->load->view('shop_products', array('items'=>$items));
+		$categories = $this->Category->get_all_categories();
+		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories));
 		//=======
 		//$this->load->view('signin');
 		//>>>>>>> 23ff019e5d8386126ffc396e59aea94288120601
@@ -20,6 +21,9 @@ class Process extends CI_Controller {
 		$this->form_validation->set_rules("password", "Password", 'trim|required|min_length[8]|matches[confirm_password]|md5');
 		$this->form_validation->set_rules("confirm_password", "Confirm Password", 'required');
 		$this->form_validation->set_rules("billing_address", "Billing Address", 'required');
+		$this->form_validation->set_rules("city", "City", 'required');
+		$this->form_validation->set_rules("state", "State", 'required');
+		$this->form_validation->set_rules("zip_code", "Zip Code", 'required');
 		if($this->form_validation->run() == FALSE)
 		{
 			$this->view_data['errors'] = validation_errors();
@@ -44,6 +48,17 @@ class Process extends CI_Controller {
 			$add_customer_info = $this->customer->add_customer_info($customer_info);
 					redirect('/');
 		}
+	}
+	public function shop_showproducts($id)
+	{
+		$items = $this->Item->get_items_by_categoryid($id); 
+		$categories = $this->Category->get_all_categories();
+		$this->load->shop_showproducts('shop_products', array('items'=>$items, 'categories'=>$categories));
+	}
+	public function shop_showitem($id)
+	{
+		$items = $this->Item->get_item_id($id); 
+		$this->load->shop_showitem('shop_products', array('items'=>$items);
 	}
 }
 

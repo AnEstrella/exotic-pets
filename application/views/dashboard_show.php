@@ -19,22 +19,24 @@
 	<div class='container'>
 		<div class='row'>
 			<div class='col-md-4'>
-				<p>Order ID: 1</p>
+				<p>Order ID: <?=$order[0]['order_id']?></p>
 				<p>Customer Shipping Info:</p>
 				<ul id='show_customer_shipping'>
-					<li>Name:</li>
-					<li>Address:</li>
-					<li>City:</li>
-					<li>State:</li>
-					<li>Zip:</li>
+
+
+					<li>Name: <?=$order[0]['first_name'] . " " . $order[0]['last_name']?></li>
+					<li>Address: <?=$order[0]['shipping_address']?></li>
+					<li>City: <?=$order[0]['city']?></li>
+					<li>State: <?=$order[0]['state']?></li>
+					<li>Zip: <?=$order[0]['zip_code']?></li>
 				</ul>
 				<p>Customer Billing Info:</p>
 				<ul id='show_customer_billing'>
-					<li>Name:</li>
-					<li>Address:</li>
-					<li>City:</li>
-					<li>State:</li>
-					<li>Zip:</li>
+					<li>Name: <?=$order[0]['first_name'] . " " . $order[0]['last_name']?></li>
+					<li>Address: <?=$order[0]['billing_address']?></li>
+					<li>City: <?=$order[0]['city']?></li>
+					<li>State: <?=$order[0]['state']?></li>
+					<li>Zip: <?=$order[0]['zip_code']?></li>
 				</ul>
 			</div>
 			<div class='col-md-8'>
@@ -47,20 +49,26 @@
 						<th>Total</th>
 					</thead>
 					<tbody>
-						<tr>
-							<td>35</td>
-							<td>Cat</td>
-							<td>$1,000</td>
-							<td>2</td>
-							<td>$2,000</td>
-						</tr>
+<?php  
+				foreach($order as $value)
+{?>
+					<tr>
+						<td><?=$value['id']?></td>
+						<td><?=$value['name']?></td>
+						<td><?=$value['price']?></td>
+						<td><?=$value['quantity']?></td>
+						<td><?=$value['total_price']?></td>
+					</tr>
+
+<?php } ?>
+
 					</tbody>
 				</table>
-				<p id='show_status'>Status: shipped</p>
+				<p id='show_status'>Status: <?=$value['status']?></p>
 				<ul id='show_price_total'>
-					<li>Sub Total: $101.99</li>
-					<li>Shipping: $50.99</li>
-					<li>Total Price: $151.99</li>
+					<li>Sub Total: <?=$value['total_price']?></li>
+					<li>Shipping: <?=$value['shipping_price']?></li>
+					<li>Total Price: </li>
 				</ul>
 			</div>
 		</div>
