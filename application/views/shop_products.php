@@ -125,9 +125,12 @@
 	</form>
 	<h4>Categories</h4>
 	<ul>
-		<li>Lions (##)</li>
-		<li>Tigers (#)</li>
-		<li>Bears (##)</li>
+		<?php 
+			foreach(array_reverse($categories) as $category) {?>
+			<li>
+				<a href="shop_showproducts/<?= $category['id'] ?>"><?= $category['type'] ?> ()</a>
+			</li>
+		<?}?> 
 	</ul>
 </div>
 
@@ -158,15 +161,17 @@
 
  	<div id="product-images">
 	    <ul>
-<?php 
-foreach(array_reverse($items) as $item) {?>
-		<li>
-			<img src="<?= $item['image_url'] ?>">
-			<span class="thumbnail-price"><?= $item['price'] ?></span>
-			<p><?= $item['name'] ?></p></li>
-		</li>
-<?}?>
-<!-- 
+		<?php 
+		foreach(array_slice($items, 0,15) as $item) {?>
+				<li>
+					<a href="shop_showitem/<?= $item['id'] ?>">
+						<img src="<?= $item['image_url'] ?>">
+						<span class="thumbnail-price"><?= $item['price'] ?></span>
+						<p><?= $item['name'] ?></p>
+					</a>
+				</li>
+		<?}?>
+<!--  	
 	      <li>
 	      	<img src="http://upload.wikimedia.org/wikipedia/commons/7/76/120px-Single.png" height="120px" width="120px">
 	      	<span class="thumbnail-price">$1000.00</span>

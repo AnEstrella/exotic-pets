@@ -50,6 +50,8 @@ $route['searchOrders'] = '/admin_controller/searchOrders';
 $route['viewOrder/(:any)'] = '/admin_controller/viewOrder/$1';
 $route['searchProducts'] = '/admin_controller/searchProducts';
 $route['sortOrders'] = '/admin_controller/sortOrders';
+$route['shop_showproducts/(:num)'] = '/process/shop_products/$1';
+$route['shop_showitem/(:num)'] = '/process/shop_showitem/$1';
 $route['404_override'] = '';
 
 
