@@ -58,6 +58,13 @@ class Admin_Controller extends CI_Controller {
 		$data['products'] = $this->Admin_Model->searchProducts($product);
 		echo json_encode($data);
 	}
+	public function sortOrders()
+	{
+		$orders = $this->input->post('order_dropdown');
+		$this->load->model('Admin_Model');
+		$data['orders'] = $this->Admin_Model->sortOrders($orders);
+		echo json_encode($data);
+	}
 }
 
 /* End of file welcome.php */

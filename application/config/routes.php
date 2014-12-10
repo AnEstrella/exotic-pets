@@ -49,6 +49,7 @@ $route['loadOrders'] = '/admin_controller/loadOrders';
 $route['searchOrders'] = '/admin_controller/searchOrders';
 $route['viewOrder/(:any)'] = '/admin_controller/viewOrder/$1';
 $route['searchProducts'] = '/admin_controller/searchProducts';
+$route['sortOrders'] = '/admin_controller/sortOrders';
 $route['404_override'] = '';
 
 
