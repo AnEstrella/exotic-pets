@@ -42,4 +42,13 @@ class Admin_Model extends CI_Model
 		GROUP BY orders.id";
 		return $this->db->query($query)->result_array();
 	}
+	function showProducts()
+	{
+		return $this->db->query("SELECT * FROM items")->result_array();
+	}
+	function searchProducts($str)
+	{
+		$query = "SELECT * FROM items WHERE name like '%{$str}%'";
+		return $this->db->query($query)->result_array();
+	}
 }

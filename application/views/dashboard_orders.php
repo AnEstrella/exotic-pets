@@ -31,7 +31,7 @@
 		<div class='navbar-header'>
 			<h3>Dashboard</h3>
       		<a href='#' id='orders_link_on_orders'>Orders</a>
-      		<a href='/loadProducts' id='products_link'>Products</a>
+      		<a href='/showProducts' id='products_link'>Products</a>
       		<a href='#' id='logoff_link'>log off</a>
 		</div>
 	</div>
