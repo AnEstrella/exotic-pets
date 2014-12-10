@@ -4,17 +4,10 @@ class Process extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->model('Category');
 		$items = $this->Item->get_all_items(); 
-<<<<<<< HEAD
+		$this->load->model('Category');
 		$categories = $this->Category->get_all_categories();
 		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories));
-		//=======
-		//$this->load->view('signin');
-		//>>>>>>> 23ff019e5d8386126ffc396e59aea94288120601
-=======
-		$this->load->view('shop_products', array('items'=>$items));
->>>>>>> 9b24866c3fb98a6f670a6f6f1d933015a4c1652f
 	}
 	public function register()
 	{
@@ -53,16 +46,17 @@ class Process extends CI_Controller {
 					redirect('/');
 		}
 	}
-	public function shop_showproducts($id)
+	public function shop_products($id)
 	{
 		$items = $this->Item->get_items_by_categoryid($id); 
+		$this->load->model('Category');
 		$categories = $this->Category->get_all_categories();
-		$this->load->shop_showproducts('shop_products', array('items'=>$items, 'categories'=>$categories));
+		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories));
 	}
 	public function shop_showitem($id)
 	{
-		$items = $this->Item->get_item_id($id); 
-		$this->load->shop_showitem('shop_products', array('items'=>$items);
+		$items = $this->Item->getitem_by_id($id); 
+		$this->load->view('shop_showitem', array('items'=>$items));
 	}
 }
 

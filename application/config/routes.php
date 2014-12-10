@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "admin_controller";
+$route['default_controller'] = "process";
 $route['register'] = "/process/register";
 $route['index'] = '/process/index';
 $route['dashboard_orders'] = '/admin_controller/dashboard_orders';
@@ -48,7 +48,7 @@ $route['loadProducts'] = '/admin_controller/loadProducts';
 $route['loadOrders'] = '/admin_controller/loadOrders';
 $route['searchOrders'] = '/admin_controller/searchOrders';
 $route['viewOrder/(:any)'] = '/admin_controller/viewOrder/$1';
-$route['shop_showproducts/(:num)'] = '/process/shop_products/$1';
+$route['shop_products/(:num)'] = '/process/shop_products/$1';
 $route['shop_showitem/(:num)'] = '/process/shop_showitem/$1';
 $route['404_override'] = '';
 

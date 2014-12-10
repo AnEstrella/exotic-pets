@@ -7,96 +7,6 @@
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<style>
-#categories{
-	border: 2px solid black;
-	margin-top: 63px;
-	margin-left:15px;
-	display: inline-block;
-	width: 250px;
-	vertical-align: top;
-	padding: 10px;
-}
-#categories span{
-	position: absolute;
-	top: 85px;
-	left: 220px;
-}
-	#categories ul{
-		list-style-type: none;
-	}
-#product-grid{
-	border: 2px solid black;
-	max-width: 800px;
-	display: inline-block;
-	vertical-align: top;
-	margin-top: 63px;
-	margin-left: 10px;
-	padding-left: 20px;
-	min-height: 620px;
-	position: relative;
-}
-#grid-nav{
-	margin-right: 20px;
-	height: 60px;
-}
-	#grid-header{
-		position: absolute;
-		display: inline-block;
-	}
-	#grid-header-right ul{
-		display: inline-block;
-		padding-top: 47px;
-		list-style-type: none;
-	}
-	#grid-header-right li{
-		display: inline-block;
-		padding-right: 20px;
-	}
-#sort-dropdown
-{
-	padding-right: 30px;
-	padding-top: 5px;
-	position: absolute;
-	right: 10px;
-}
-#product-images{
-	margin-top: 30px;
-}
-	#product-images ul{
-		list-style-type: none;
-		display: inline-block;
-	}
-	#product-images li{
-		display: inline-block;
-		padding: 5px;
-		position: relative;
-	}
-	#product-images img{
-		width: 120px;
-		height: 120px;
-	}
-	#product-images p{
-		max-width: 120px;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-	}
-.thumbnail-price{
-    background: none repeat scroll 0 0 #FFFFFF;
-    opacity: 0.5;
-    top:105;
-    left:6;
-    position: absolute;
-    width: 118px;
-    padding-left: 50px;
-}
-#grid-footer{
-	position: absolute;
-	bottom: 10px;
-} 
-
-</style>
 </head>
 <body>
 	<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
@@ -125,10 +35,11 @@
 	</form>
 	<h4>Categories</h4>
 	<ul>
+		<li><a href="/">All (#)</a></li>
 		<?php 
 			foreach(array_reverse($categories) as $category) {?>
 			<li>
-				<a href="shop_showproducts/<?= $category['id'] ?>"><?= $category['type'] ?> ()</a>
+				<a href="/shop_products/<?= $category['id'] ?>"><?= $category['type'] ?> (#)</a>
 			</li>
 		<?}?> 
 	</ul>
@@ -171,29 +82,7 @@
 					</a>
 				</li>
 		<?}?>
-<!--  	
-	      <li>
-	      	<img src="http://upload.wikimedia.org/wikipedia/commons/7/76/120px-Single.png" height="120px" width="120px">
-	      	<span class="thumbnail-price">$1000.00</span>
-	      	<p>Item 1</p></li>
-	      <li>
-	      	<img src="http://www.online-image-editor.com/styles/2013/images/example_image.png" height="120px" width="120px">
-	      	<span class="thumbnail-price">$200.00</span>
-	      	<p>Item 2</p>
-	      </li>
-	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 3</p></li>
-	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 4</p></li>
-	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 5</p></li>
-	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 6</p></li>
-	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 7</p></li>
-	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 8</p></li>
-	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 9</p></li>
-	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 10</p></li>
-	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 11</p></li>
-	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 12</p></li>
-	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 13</p></li>
-	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 14</p></li>
-	      <li><img src="#" height="120px" width="120px"><span class="thumbnail-price">$20.00</span><p>Item 15</p></li> -->
+
 	    </ul>
   </div>
   <div id="grid-footer">
