@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `pets_schema` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE  IF NOT EXISTS `pets_schema` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `pets_schema`;
 -- MySQL dump 10.13  Distrib 5.6.19, for osx10.7 (i386)
 --
@@ -92,6 +92,7 @@ CREATE TABLE `categories_has_items` (
 
 LOCK TABLES `categories_has_items` WRITE;
 /*!40000 ALTER TABLE `categories_has_items` DISABLE KEYS */;
+INSERT INTO `categories_has_items` VALUES (9,1),(9,2),(9,3),(9,4),(6,5),(7,6),(8,7);
 /*!40000 ALTER TABLE `categories_has_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,7 +171,7 @@ CREATE TABLE `items` (
   `inventory_count` int(11) DEFAULT NULL,
   `total_sold` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,7 +180,7 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` VALUES (1,'lion',18000.00,'this is a lion','/assets/images/lion.jpeg',4,1),(2,'tarsier',15000.00,'tarsier','/assets/images/tarsier.jpg',12,2),(3,'giraffe',9000.00,'long neck','/assets/images/giraffe.jpg',15,3),(4,'goat',900.00,'pygmy goat','/assets/images/pygmygoat.jpg',9,4),(5,'jellyfish',1000.00,'jellyfish','/assets/images/seanettlejellyfish.jpg',1,5),(6,'triceratops',500000.00,'tricerawhat','/assets/images/triceratops.jpg',4,0);
+INSERT INTO `items` VALUES (1,'lion',18000.00,'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.','/assets/images/lion.jpeg',4,1),(2,'tarsier',15000.00,'One of the smallest monkeys, coming from the Philippine islands.','/assets/images/tarsier.jpg',12,2),(3,'giraffe',9000.00,'long neck','/assets/images/giraffe.jpg',15,3),(4,'goat',900.00,'pygmy goat','/assets/images/pygmygoat.jpg',9,4),(5,'jellyfish',1000.00,'Sea nettle jellyfish. The average length of this aquatic creature is 6 feet.','/assets/images/seanettlejellyfish.jpg',1,5),(6,'Triceratops',500000.00,'tricerawhat','/assets/images/triceratops.jpg',4,0),(7,'Harpy Eagle',5000.00,'From the Amazon rainforest.','/assets/images/harpyeagle.jpg',22,0),(8,'Blue Tarantula',700.00,'Cobalt Blue Tarantula.','/assets/images/bluetarantula.jpg',31,0),(9,'Green Monkey Frog',450.00,'Don\'t kiss the frog! His skin contains hallucigenic chemicals.','/assets/images/greenmonkeyfrog.jpg',13,0),(10,'Elephant',7000.00,'The largest mammal.','/assets/images/elephant.jpeg',102,0),(11,'King Cobra',3300.00,'Fangs and brown scales.','/assets/kingcobra.jpg',112,0);
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -280,4 +281,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-12-10  9:02:24
+-- Dump completed on 2014-12-10 14:09:22
