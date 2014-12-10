@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "process";
+$route['default_controller'] = "admin_controller";
 $route['register'] = "/process/register";
 $route['index'] = '/process/index';
 $route['dashboard_orders'] = '/admin_controller/dashboard_orders';

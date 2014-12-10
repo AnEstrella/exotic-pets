@@ -29,6 +29,24 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="./assets/css/signin.css">
 
+  	<script type="text/javascript">
+  		function fillinBilling(userForm)
+  		{
+  			if (userForm.sameAddress.checked == true)
+  			{
+  				console.log(userForm);
+  				userForm.BillingFirstName.value = userForm.ShippingFirstName.value;
+  				userForm.BillingLastName.value = userForm.ShippingLastName.value;
+  				userForm.BillingAddress.value = userForm.ShippingAddress.value;
+  				userForm.BillingAddress2.value = userForm.ShippingAddress2.value;
+  				userForm.BillingCity.value = userForm.ShippingCity.value;
+  				userForm.BillingState.value = userForm.ShippingState.value;
+  				userForm.BillingZipcode.value = userForm.ShippingZipcode.value;				 
+  			}
+
+
+  		}
+  	</script>
   	<style type="text/css">
 
 	.navbar {
@@ -42,6 +60,10 @@
 		padding: 10px;
 	}
 
+	.errors {
+		color: red;
+	}
+
   	</style>
   </head>
   <body>
@@ -53,7 +75,7 @@
 				<h3 class="navbar-right">Shopping Cart (22)</h3>
 		</div>
 	</nav>
-	<div class="container">
+	<div class="container"> <!-- Shopping Cart Items -->
 		<div>
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
@@ -101,120 +123,137 @@
 					</tbody>
 			</table>
 		<div class='row'>
-			<div class='col-lg-'>
-				<p class="navbar-right">Total: $250,740.00</p>
-				<p>&nbsp;</p>
-				<form method='post' action='/searchProducts'>
-					<input class='btn btn-primary navbar-right' id='add_button' value='Continue Shopping'>
+			<div class='navbar-right'>
+				<p class="pull-right">Product Total: $250,740.00</p>
+				<form method='post' action='/search/products'>
+					<input class='btn btn-primary' id='continueShopping' name="continueShopping" value='Continue Shopping'>
 				</form>
 			</div>
+		</div> <!-- End Shopping Cart Items -->
+		<div class="row errors">  <!-- Print any form entry errors. -->
+<?php 	
+				echo "<br>";
+ 				if ($this->session->flashdata("registration_error"))
+					{
+						echo $this->session->flashdata("registration_error") . "<br>";
+					}
+?>		
 		</div>
-
     	<div class="row">
 	    	<h1>Shipping Information</h1>
-	        <form role="form">
+	        <form role="form" action="/cart/submitorder" method="post">
 	            <div class="col-lg-6">
 	                <div class="form-group">
-	                    <label for="InputFirstName">First Name:</label>
-	                    <input type="text" class="form-control" name="InputFirstName" id="InputFirstName" placeholder="Enter First Name" required>
+	                    <label for="ShippingFirstName">First Name:</label>
+	                    <input type="text" class="form-control" name="ShippingFirstName" id="ShippingFirstName" placeholder="Enter First Name" required>
 	                </div>
 	                <div class="form-group">
-	                    <label for="InputLastName">Last Name:</label>
-	                    <input type="text" class="form-control" name="InputLastName" id="InputLastName" placeholder="Enter Last Name" required>
+	                    <label for="ShippingLastName">Last Name:</label>
+	                    <input type="text" class="form-control" name="ShippingLastName" id="ShippingLastName" placeholder="Enter Last Name" required>
 	                </div>
 	                <div class="form-group">
-	                    <label for="InputAddress">Address:</label>
-	                    <input type="text" class="form-control" name="InputAddress" id="InputAddress" placeholder="Enter Address" required>
+	                    <label for="Password">Enter Password</label>
+	                    <input type="password" class="form-control" id="Password" name="Password" placeholder="Enter Your Password" required>
 	                </div>
 	                <div class="form-group">
-	                    <label for="InputAddress2">Address 2:</label>
-	                    <input type="text" class="form-control" name="InputAddress" id="InputAddress2" placeholder="Enter Address 2" required>
+	                    <label for="PasswordConfirm">Confirm Password</label>
+	                    <input type="password" class="form-control" id="PasswordConfirm" name="PasswordConfirm" placeholder="Confirm Your Password" required>
+	                </div>	                
+	                <div class="form-group">
+	                    <label for="Email">Enter Email</label>
+	                    <input type="email" class="form-control" id="Email" name="Email" placeholder="Enter Email" required>
 	                </div>
 	                <div class="form-group">
-	                    <label for="InputCity">City:</label>
-	                    <input type="text" class="form-control" name="InputCity" id="InputCity" placeholder="Enter City" required>
+	                    <label for="EmailConfirm">Confirm Email</label>
+	                    <input type="email" class="form-control" id="EmailConfirm" name="EmailConfirm" placeholder="Confirm Email" required>
+	                </div>	                
+	                <div class="form-group">
+	                    <label for="ShippingAddress">Address:</label>
+	                    <input type="text" class="form-control" name="ShippingAddress" id="ShippingAddress" placeholder="Enter Address" required>
 	                </div>
 	                <div class="form-group">
-	                    <label for="InputState">State:</label>
-	                    <input type="text" class="form-control" name="InputState" id="InputState" placeholder="Enter State" required>
+	                    <label for="ShippingAddress2">Address 2:</label>
+	                    <input type="text" class="form-control" name="ShippingAddress2" id="ShippingAddress2" placeholder="Enter Address 2" required>
 	                </div>
 	                <div class="form-group">
-	                    <label for="InputZipcode">Zipcode:</label>
-	                    <input type="text" class="form-control" name="InputZipcode" id="InputZipcode" placeholder="Enter Zipcode" required>
+	                    <label for="ShippingCity">City:</label>
+	                    <input type="text" class="form-control" name="ShippingCity" id="ShippingCity" placeholder="Enter City" required>
 	                </div>
 	                <div class="form-group">
-	                    <label for="InputEmail">Enter Email</label>
-	                    <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Enter Email" required>
+	                    <label for="ShippingState">State:</label>
+	                    <input type="text" class="form-control" name="ShippingState" id="ShippingState" placeholder="Enter State" required>
 	                </div>
 	                <div class="form-group">
-	                    <label for="InputEmail">Confirm Email</label>
-	                    <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Confirm Email" required>
+	                    <label for="ShippingZipcode">Zipcode:</label>
+	                    <input type="text" class="form-control" name="ShippingZipcode" id="ShippingZipcode" placeholder="Enter Zipcode" required>
 	                </div>
 	            </div>
-	        </form>
     	</div>
     	<div class="input-group">
       		<span class="input-group-addon">
-        		<input type="checkbox">&nbsp;Billing Address Same as Shipping
+        		<input type="checkbox" name="sameAddress" onclick="fillinBilling(this.form)">&nbsp;Billing Address Same as Shipping
       		</span>
     	</div> <!-- /input-group for Billing/Shipping -->
     	<div class="row">
 	    	<h1>Billing Information</h1>
-	        <form role="form">
 	            <div class="col-lg-6">
 	                <div class="form-group">
-	                    <label for="InputFirstName">First Name:</label>
-	                    <input type="text" class="form-control" name="InputFirstName" id="InputFirstName" placeholder="Enter First Name" required>
+	                    <label for="BillingFirstName">First Name:</label>
+	                    <input type="text" class="form-control" name="BillingFirstName" id="BillingFirstName" placeholder="Enter First Name" required>
 	                </div>
 	                <div class="form-group">
-	                    <label for="InputLastName">Last Name:</label>
-	                    <input type="text" class="form-control" name="InputLastName" id="InputLastName" placeholder="Enter Last Name" required>
+	                    <label for="BillingLastName">Last Name:</label>
+	                    <input type="text" class="form-control" name="BillingLastName" id="BillingLastName" placeholder="Enter Last Name" required>
 	                </div>
 	                <div class="form-group">
-	                    <label for="InputAddress">Address:</label>
-	                    <input type="text" class="form-control" name="InputAddress" id="InputAddress" placeholder="Enter Address" required>
+	                    <label for="BillingAddress">Address:</label>
+	                    <input type="text" class="form-control" name="BillingAddress" id="BillingAddress" placeholder="Enter Address" required>
 	                </div>
 	                <div class="form-group">
-	                    <label for="InputAddress2">Address 2:</label>
-	                    <input type="text" class="form-control" name="InputAddress" id="InputAddress2" placeholder="Enter Address 2" required>
+	                    <label for="BillingAddress2">Address 2:</label>
+	                    <input type="text" class="form-control" name="BillingAddress2" id="BillingAddress2" placeholder="Enter Address 2" required>
 	                </div>
 	                <div class="form-group">
-	                    <label for="InputCity">City:</label>
-	                    <input type="text" class="form-control" name="InputCity" id="InputCity" placeholder="Enter City" required>
+	                    <label for="BillingCity">City:</label>
+	                    <input type="text" class="form-control" name="BillingCity" id="BillingCity" placeholder="Enter City" required>
 	                </div>
 	                <div class="form-group">
-	                    <label for="InputState">State:</label>
-	                    <input type="text" class="form-control" name="InputState" id="InputState" placeholder="Enter State" required>
+	                    <label for="BillingState">State:</label>
+	                    <input type="text" class="form-control" name="BillingState" id="BillingState" placeholder="Enter State" required>
 	                </div>
 	                <div class="form-group">
-	                    <label for="InputZipcode">Zipcode:</label>
-	                    <input type="text" class="form-control" name="InputZipcode" id="InputZipcode" placeholder="Enter Zipcode" required>
+	                    <label for="BillingZipcode">Zipcode:</label>
+	                    <input type="text" class="form-control" name="BillingZipcode" id="BillingZipcode" placeholder="Enter Zipcode" required>
+	                </div>	                
+	                <div class="form-group">
+	                    <label for="CreditCard">Credit Card:</label>
+	                    <input type="number" class="form-control" id="CreditCard" name="CreditCard" placeholder="Enter Credit Card Number" required>
 	                </div>
 	                <div class="form-group">
-	                    <label for="InputEmail">Enter Email:</label>
-	                    <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Enter Email" required>
+	                    <label for="SecurityCode">Security Code:</label>
+	                    <input type="number" class="form-control" id="SecurityCode" name="SecurityCode" placeholder="Enter Card Security Code" required>
 	                </div>
 	                <div class="form-group">
-	                    <label for="InputEmail">Confirm Email:</label>
-	                    <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Confirm Email" required>
+	                    <label for="ExpirationMonth">Expiration Month:</label>
+	                    <input type="number" class="form-control" id="ExpirationMonth" name="ExpirationMonth" placeholder="Enter 2 Digit Card Expiration Month" required>
 	                </div>
 	                <div class="form-group">
-	                    <label for="InputCreditCard">Credit Card:</label>
-	                    <input type="email" class="form-control" id="InputCreditCard" name="InputCreditCard" placeholder="Enter Credit Card Number" required>
+	                    <label for="ExpirationYear">Expiration Year:</label>
+	                    <input type="number" class="form-control" id="ExpirationYear" name="ExpirationYear" placeholder="Enter 4 Digit Card Expiration Year" required>
 	                </div>
-	                <div class="form-group">
-	                    <label for="InputSecurityCode">Security Code:</label>
-	                    <input type="email" class="form-control" id="InputSecurityCode" name="InputSecurityCode" placeholder="Enter Card Security Code" required>
-	                </div>
-	                <div class="form-group">
-	                    <label for="InputExpirationMonth">Expiration Month:</label>
-	                    <input type="email" class="form-control" id="InputExpirationMonth" name="InputExpirationMonth" placeholder="Enter Card Expiration Month" required>
-	                </div>
-	                <div class="form-group">
-	                    <label for="InputExpirationMonth">Expiration Year:</label>
-	                    <input type="email" class="form-control" id="InputExpirationYear" name="InputExpirationYear" placeholder="Enter Card Expiration Year" required>
-	                </div>
-	                <input type="submit" name="submit" id="submit" value="Pay for Order" class="btn btn-info pull-right">
+				<div class="dropdown pull-right">
+  					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+    					Shipping Method
+    					<span class="caret"></span>
+  					</button>
+				  	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+				    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Overnight</a></li>
+				    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Express</a></li>
+				    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ground</a></li>
+				  	</ul>
+	                <input type="submit" name="submit" id="submit" value="Pay" class="btn btn-info pull-right">
+				</div>
+
 	            </div>
 	        </form>
     	</div>

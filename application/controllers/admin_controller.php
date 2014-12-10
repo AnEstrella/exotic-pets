@@ -2,11 +2,11 @@
 
 class Admin_Controller extends CI_Controller {
 
-	// public function index()
-	// {
-	// 	$this->load->model('Admin_Model');
-	// 	$this->load->view('dashboard_orders', array('orders' => $this->Admin_Model->show_all_orders()));
-	// }
+	public function index()
+	{
+		$this->load->model('Admin_Model');
+		$this->load->view('dashboard_orders', array('orders' => $this->Admin_Model->show_all_orders()));
+	}
 	public function admin_login()
 	{
 		$email = $this->input->post('email');
@@ -37,17 +37,18 @@ class Admin_Controller extends CI_Controller {
 	{
 		$this->load->view('dashboard_orders');
 	}
-	public function searchOrders()
-	{
-		$this->load->model('Admin_Model');
-		$this->load->view('dashboard_orders', array('orders' => $this->Admin_Model->show_all_orders()));
-	}
 	public function viewOrder($order_id)
 	{
 		$this->load->model('Admin_Model');
 		$this->load->view('dashboard_show', array('order' => $this->Admin_Model->get_order_by_id($order_id)));
 
-
+	}
+	public function searchOrders()
+	{
+		$order = $this->input->post('search_orders');
+		$this->load->model('Admin_Model');
+		$data['orders'] = $this->Admin_Model->searchOrders($order);
+		echo json_encode($data);
 	}
 }
 
