@@ -48,13 +48,10 @@ $route['showProducts'] = '/admin_controller/showProducts';
 $route['loadOrders'] = '/admin_controller/loadOrders';
 $route['searchOrders'] = '/admin_controller/searchOrders';
 $route['viewOrder/(:any)'] = '/admin_controller/viewOrder/$1';
-<<<<<<< HEAD
 $route['shop_products/(:num)'] = '/process/shop_products/$1';
-=======
 $route['searchProducts'] = '/admin_controller/searchProducts';
 $route['sortOrders'] = '/admin_controller/sortOrders';
 $route['shop_showproducts/(:num)'] = '/process/shop_products/$1';
->>>>>>> 8879663b996ac1f363cf258f53f88ba2d5984ecc
 $route['shop_showitem/(:num)'] = '/process/shop_showitem/$1';
 $route['404_override'] = '';
 

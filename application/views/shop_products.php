@@ -73,15 +73,25 @@
  	<div id="product-images">
 	    <ul>
 		<?php 
-		foreach(array_slice($items, 0,15) as $item) {?>
+		foreach(array_slice($items, 0,15) as $item) {
+			if(!isset($item['item_id'])){?>
 				<li>
-					<a href="shop_showitem/<?= $item['id'] ?>">
+					<a href="/shop_showitem/<?= $item['id'] ?>">
 						<img src="<?= $item['image_url'] ?>">
 						<span class="thumbnail-price"><?= $item['price'] ?></span>
 						<p><?= $item['name'] ?></p>
 					</a>
 				</li>
-		<?}?>
+			<? } else
+			 {?>
+				<li>
+					<a href="/shop_showitem/<?= $item['item_id'] ?>">
+						<img src="<?= $item['image_url'] ?>">
+						<span class="thumbnail-price"><?= $item['price'] ?></span>
+						<p><?= $item['name'] ?></p>
+					</a>
+				</li>
+		<?}}?>
 
 	    </ul>
   </div>
