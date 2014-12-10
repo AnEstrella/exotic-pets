@@ -44,7 +44,7 @@
 		<p>
 			<?= $items[0]['description'] ?>
 		</p>
-		<form>
+		<form method="post" action="/cart">
 			<h5>Price:</h5>
 			<select>		
 			  <option value="1">1 (<?= $items[0]['price'] ?>)</option>

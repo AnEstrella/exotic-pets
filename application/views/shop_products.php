@@ -7,7 +7,16 @@
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+
+<script>
+$("#sort_by_dropdown").change(function() {
+  alert( "Handler for .change() called." );
+});
+</script>
+
 </head>
+
 <body>
 	<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
       <div class="container">
@@ -48,21 +57,29 @@
 <div id="product-grid">
 	<div id="grid-nav">
 	  	<div id="grid-header">
-	  		<h2>Products (page #)</h2>
+	  		<h2>
+	  			<?php if(!isset($items[0]['type'])){?>
+	  				Animals 
+	  			<?}
+	  			else{?>
+	  			<?= $items[0]['type'] ?>
+	  			<?}?>
+	  			(page #)
+	  		</h2>
 	  	</div>
 	  	<div id="grid-header-right">
 		  	<ul class="navbar-right">
-		      <li><a href="shop_cart">first</a></li>
-		      <li><a href="shop_cart">prev</a></li>
-		      <li><a href="shop_cart">#</a></li>
-		      <li><a href="shop_cart">next</a></li>
+		      <li><a href="#">first</a></li>
+		      <li><a href="#">prev</a></li>
+		      <li><a href="#">#</a></li>
+		      <li><a href="#">next</a></li>
 		    </ul>
 		</div>
  	</div>
  	<div id="sort-dropdown" class="navbar-right">
  		<p>
 	 		Sort By:
-	 		<select>
+	 		<select class="sort_by_dropdown">
 	 			<option value="price">Price</option>
 	 			<option value="most popular">Most Popular</option>
 	 			<option value="name">Name</option>
