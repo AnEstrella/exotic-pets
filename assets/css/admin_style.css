@@ -31,14 +31,14 @@
 	}
 	#logoff_link
 	{
-		margin-left: 500px;
-		display: inline-block;
+		position: relative;
+		left: 200%;
 	}
 .table_pages
 {
 	list-style: none;
 	margin-top: 30px;
-	margin-left: 55px;
+	margin-left: 150px;
 }
 	.table_pages li 
 	{
@@ -74,7 +74,7 @@
 }
 #order_status_dropdown
 {
-	margin-left: 525px;
+	margin-left: 850px;
 }
 #products_search
 {

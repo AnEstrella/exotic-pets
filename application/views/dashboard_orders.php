@@ -3,10 +3,29 @@
 	<title></title>
 	<link rel="stylesheet" type='text/css' href="/assets/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/admin_style.css">
-
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$(document).on('keyup', '#orders_form', function(){
+			$('#table_body').html('');
+			$.post(
+				$(this).attr("action"),
+				$(this).serialize(),
+				function(orders_received)
+				{
+					jQuery.each(orders_received['orders'], function(i, val)
+					{
+						$('#table_body').append("<tr><td>" + "<a href='/viewOrder/" + val.order_id + "'>" + val.order_id + "</a></td><td>" + val.first_name + " " + val.last_name + "</td><td>" + val.ordered_on + "</td><td>" + val.billing_address + ", " + val.city + ", " + val.state + " " + val.zip_code + "</td><td>" + val.total_price + "</td><td><select><option value='Shipped'>Shipped</option><option value='Order in process'>Order in process</option><option value='Canceled'>Canceled</option></select></td></tr>");
+					});
+				},
+				"json"
+				);
+			return false;
+		});
+	});
+	</script>
 </head>
 <body>
-
 <nav class='navbar-default' role='navigation'>
 	<div class='container-fluid'>
 		<div class='navbar-header'>
@@ -20,9 +39,8 @@
 	<div class='container'>
 		<div class='row'>
 			<div class='col-lg-'>
-				<form method='post' action='/searchOrders'>
-					<input id='orders_search' type='text' placeholder='search'>
-					<input type='submit'>
+				<form method='post' action='/searchOrders' id='orders_form'>
+					<input id='orders_search' type='text' placeholder='search' name='search_orders'>
 					<select id='order_status_dropdown'><option value='Show All'>Show All</option><option value='Order in process'>Order in process</option><option value='Shipped'>Shipped</option></select>
 				</form>
 			</div>
@@ -37,7 +55,7 @@
 					<th>Total</th>
 					<th>Status</th>
 				</thead>
-				<tbody>
+				<tbody id='table_body'>
 <?php 
 				foreach($orders as $order)
 {?>			
@@ -46,7 +64,7 @@
 						<td><?=$order['first_name'] . " " . $order['last_name']?></td>
 						<td><?=$order['ordered_on']?></td>
 						<td><?=$order['billing_address'] . ", " . $order['city'] . ", " . $order['state'] . " " . $order['zip_code']?></td>
-						<td><?=$order['total_price']?></td>
+						<td>$<?=$order['total_price']?></td>
 						<td><select><option value='Shipped'>Shipped</option><option value='Order in process'>Order in process</option><option value='Canceled'>Canceled</option></select></td>
 					</tr>
 <?php } ?>
