@@ -15,12 +15,28 @@
 				{
 					jQuery.each(orders_received['orders'], function(i, val)
 					{
-						$('#table_body').append("<tr><td>" + "<a href='/viewOrder/" + val.order_id + "'>" + val.order_id + "</a></td><td>" + val.first_name + " " + val.last_name + "</td><td>" + val.ordered_on + "</td><td>" + val.billing_address + ", " + val.city + ", " + val.state + " " + val.zip_code + "</td><td>" + val.total_price + "</td><td><select><option value='Shipped'>Shipped</option><option value='Order in process'>Order in process</option><option value='Canceled'>Canceled</option></select></td></tr>");
+						$('#table_body').append("<tr><td>" + "<a href='/viewOrder/" + val.order_id + "'>" + val.order_id + "</a></td><td>" + val.first_name + " " + val.last_name + "</td><td>" + val.ordered_on + "</td><td>" + val.billing_address + ", " + val.city + ", " + val.state + " " + val.zip_code + "</td><td>" + val.total_price + "</td><td><select><option value='" + val.status + "'>" + val.status + "</option><option value='Processing'>Processing</option><option value='Canceled'>Canceled</option></select></td></tr>");
 					});
 				},
 				"json"
 				);
 			return false;
+		});
+		$(document).on('change', '#order_status_dropdown', function(){	
+			$('#table_body').html('');
+			$.post(
+				$(this).attr("action"),
+				$(this).serialize(),
+				function(orders_sorted)
+				{
+					jQuery.each(orders_sorted['orders'], function(i, val)
+					{
+						$('#table_body').append("<tr><td>" + "<a href='/viewOrder/" + val.order_id + "'>" + val.order_id + "</a></td><td>" + val.first_name + " " + val.last_name + "</td><td>" + val.ordered_on + "</td><td>" + val.billing_address + ", " + val.city + ", " + val.state + " " + val.zip_code + "</td><td>" + val.total_price + "</td><td><select><option value='" + val.status + "'>" + val.status + "</option><option value='Processing'>Processing</option><option value='Canceled'>Canceled</option></select></td></tr>");	
+					});
+				},
+				"json"
+				);
+		return false;
 		});
 	});
 	</script>
@@ -31,7 +47,7 @@
 		<div class='navbar-header'>
 			<h3>Dashboard</h3>
       		<a href='#' id='orders_link_on_orders'>Orders</a>
-      		<a href='/loadProducts' id='products_link'>Products</a>
+      		<a href='/showProducts' id='products_link'>Products</a>
       		<a href='#' id='logoff_link'>log off</a>
 		</div>
 	</div>
@@ -41,7 +57,9 @@
 			<div class='col-lg-'>
 				<form method='post' action='/searchOrders' id='orders_form'>
 					<input id='orders_search' type='text' placeholder='search' name='search_orders'>
-					<select id='order_status_dropdown'><option value='Show All'>Show All</option><option value='Order in process'>Order in process</option><option value='Shipped'>Shipped</option></select>
+				</form>
+				<form method='post' action='/sortOrders' id='order_status_dropdown'>
+					<select name='order_dropdown' id='order_dropdown'><option value='Show All'>Show All</option><option value='Processing'>Processing</option><option value='Shipped'>Shipped</option></select>
 				</form>
 			</div>
 		</div>
@@ -65,7 +83,7 @@
 						<td><?=$order['ordered_on']?></td>
 						<td><?=$order['billing_address'] . ", " . $order['city'] . ", " . $order['state'] . " " . $order['zip_code']?></td>
 						<td>$<?=$order['total_price']?></td>
-						<td><select><option value='Shipped'>Shipped</option><option value='Order in process'>Order in process</option><option value='Canceled'>Canceled</option></select></td>
+						<td><select><option value='<?=$order['status']?>'><?=$order['status']?><option value='Shipped'>Shipped</option><option value='Processing'>Processing</option><option value='Canceled'>Canceled</option></select></td>
 					</tr>
 <?php } ?>
 				</tbody>

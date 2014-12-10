@@ -29,9 +29,10 @@ class Admin_Controller extends CI_Controller {
 			redirect('/signin');
 		}
 	}
-	public function loadProducts()
+	public function showProducts()
 	{
-		$this->load->view('dashboard_products');
+		$this->load->model('Admin_Model');
+		$this->load->view('dashboard_products', array('products' => $this->Admin_Model->showProducts()));
 	}
 	public function loadOrders()
 	{
@@ -48,6 +49,20 @@ class Admin_Controller extends CI_Controller {
 		$order = $this->input->post('search_orders');
 		$this->load->model('Admin_Model');
 		$data['orders'] = $this->Admin_Model->searchOrders($order);
+		echo json_encode($data);
+	}
+	public function searchProducts()
+	{
+		$product = $this->input->post('products_search');
+		$this->load->model('Admin_Model');
+		$data['products'] = $this->Admin_Model->searchProducts($product);
+		echo json_encode($data);
+	}
+	public function sortOrders()
+	{
+		$orders = $this->input->post('order_dropdown');
+		$this->load->model('Admin_Model');
+		$data['orders'] = $this->Admin_Model->sortOrders($orders);
 		echo json_encode($data);
 	}
 }
