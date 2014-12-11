@@ -58,9 +58,10 @@ class Process extends CI_Controller {
 		$items = $this->Item->getitem_by_id($item_id); 
 		$this->load->view('shop_showitem', array('items'=>$items));
 	}
-	public function searchitem($keyword)
+	public function searchitem()
 	{
-		$items = $this->Item->searchitem($keyword); 
+		//$keyword = $this->input->get('q');
+		$items = $this->Item->searchitem($this->input->get('q'));
 		$this->load->model('Category');
 		$categories = $this->Category->get_all_categories();
 		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories));
