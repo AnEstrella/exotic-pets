@@ -65,8 +65,16 @@
 	<div id="similar-items" class="col-md-12">
 		<h4>Similar Items</h4>
 		 <ul>
-<?php foreach(array_slice($similar_items, 0,5) as $similar_item) {?>
-	      <li><img src="#" height="120px" width="120px"><p>Item 1</p></li>
+<?php 
+//echo "<pre>"; print_r($similar_items); echo "<pre>"; die(); 
+foreach(array_slice($similar_items, 1,5) as $similar_item) {?>
+	      		<li>
+					<a href="/shop_showitem/<?= $similar_item['item_id'] ?>/<?= $similar_item['category_id'] ?>">
+					<img src="<?= $similar_item['image_url'] ?>">
+					<!-- <span class="thumbnail-price"> $similar_items[0]['price'] ?></span> -->
+					<p><?= $similar_item['name'] ?></p>
+					</a>
+				</li>
 	      <?}?>
 	  	</ul>
 	</div>

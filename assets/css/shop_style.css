@@ -175,6 +175,7 @@
 	margin-left:15px;
 	margin-top: 10px;
 	display: inline-block;
+	position: relative;
 }
 	#similar-items ul{
 		list-style-type: none;
@@ -182,4 +183,15 @@
 	#similar-items li{
 		display: inline-block;
 		padding: 10px;
+	}
+	#similar-items img{
+		height: 120px;
+		width: 120px;
+	}
+	#similar-items span{
+		outline: 1px solid red;
+		position: absolute;
+		left: 65px;
+		background: none repeat scroll 0 0 #FFFFFF;
+    	opacity: 0.5;
 	}
