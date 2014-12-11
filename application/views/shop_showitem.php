@@ -23,8 +23,14 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
           	<li><a href="admin_controller">Login</a></li>
-            <li><a href="cart">Shopping Cart (#)</a></li>
-          </ul>
+           <li><a href="/cart">Shopping Cart (<?php
+
+            	if (FALSE == $this->session->userdata('total_items'))
+            		$this->session->set_userdata('total_items',0);
+
+            	echo $this->session->userdata('total_items') . ")";
+           ?></a></li>
+           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </nav>
@@ -45,13 +51,14 @@
 		<p>
 			<?= $items[0]['description'] ?>
 		</p>
-		<form method="post" action="/cart">
+		<form method="post" action="/cart/newitem">
 			<h5>Price:</h5>
-			<select>		
+			<select name="quantity">		
 			  <option value="1">1 (<?= $items[0]['price'] ?>)</option>
 			  <option value="2">2 (<?= ($items[0]['price']*2) ?>)</option>
 			  <option value="3">3 (<?= ($items[0]['price']*3) ?>)</option>
 			</select>
+			<?php $this->session->set_userdata(array("item" => $items[0])) ?>
 			<input type="submit" value="Buy">
 		</form>
 	</div>
@@ -66,6 +73,4 @@
 	      <li><img src="#" height="120px" width="120px"><p>Item 6</p></li>
 	  	</ul>
 	</div>
-
-
 </body>

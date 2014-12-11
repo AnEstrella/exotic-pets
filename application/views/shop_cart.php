@@ -3,6 +3,7 @@
 	// 		Shopping Cart - Ecommerce Website Project - View Classes
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -70,9 +71,10 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class='container-fluid'>
 			<div class='navbar-header'>
-				<h3>Dojo eCommerce</h3>
+				<a class="navbar-brand"href='/'><h3>Exotic Pets</h3></a>
+				<p>&nbsp;&nbsp;</p>
 			</div>
-				<h3 class="navbar-right">Shopping Cart (22)</h3>
+				<h3 class="navbar-right">Shopping Cart (<?php echo $this->session->userdata("total_items"); ?>)</h3>
 		</div>
 	</nav>
 	<div class="container"> <!-- Shopping Cart Items -->
@@ -84,38 +86,38 @@
 		<div class='row' id='table_row'>
 			<table class='table table-striped table-bordered'>
 				<thead>
+					<th>Item #</th>
 					<th>Item</th>
 					<th>Price</th>
 					<th>Quantity</th>
 					<th>Total</th>
 				</thead>
 				<tbody>
-					<tr>
-						<td>Clown Fish</td>
-						<td>$12.00</td>
-						<td>20&nbsp;<a href='#'>update</a>  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></td>
-						<td>$240.00</td>
-					</tr>
-					<tr>
-						<td>Puppy</td>
-						<td>$500.00</td>
-						<td>&nbsp;1&nbsp;&nbsp;<a href='#'>update</a>  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></td>
-						<td>$500.00</td>
-					</tr>
-					<tr>
-						<td>Baby Elephant</td>
-						<td>$250,000.00</td>
-						<td>&nbsp;1&nbsp;&nbsp;<a href='#'>update</a>  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></td>
-						<td>$250,000.00</td>
-					</tr>
+<?php 				
+	
+					if (isset($this->session->userdata['cart'])) 
+					{
+						foreach ($this->session->userdata("cart") as $cartitem)
+						{
+							echo "<tr>";
+							
+							foreach ($cartitem as $values) 
+								echo "<td>" . $values . "</td>";
+
+							echo "</tr>";
+						} 
+					}
+?>
 					<tr>
 						<td>&nbsp;</td>
 						<td></td>
 						<td></td>
 						<td></td>
+						<td></td>
 					</tr>
 					<tr>
 						<td>&nbsp;</td>
+						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -124,10 +126,10 @@
 			</table>
 		<div class='row'>
 			<div class='navbar-right'>
-				<p class="pull-right">Product Total: $250,740.00</p>
-				<form method='post' action='/search/products'>
-					<input class='btn btn-primary' id='continueShopping' name="continueShopping" value='Continue Shopping'>
-				</form>
+				<p class="pull-right">Product Total: $<?= $this->session->userdata("total_price") ?>.00</p>
+				<!-- <form action='process' method='post'> -->
+				<p><a href="/"><input class='btn btn-primary' id='continueShopping' name="continueShopping" value='Continue Shopping'></a></p>
+				<!-- </form> -->
 			</div>
 		</div> <!-- End Shopping Cart Items -->
 		<div class="row errors">  <!-- Print any form entry errors. -->
@@ -173,7 +175,7 @@
 	                </div>
 	                <div class="form-group">
 	                    <label for="ShippingAddress2">Address 2:</label>
-	                    <input type="text" class="form-control" name="ShippingAddress2" id="ShippingAddress2" placeholder="Enter Address 2" required>
+	                    <input type="text" class="form-control" name="ShippingAddress2" id="ShippingAddress2" placeholder="Enter Address 2">
 	                </div>
 	                <div class="form-group">
 	                    <label for="ShippingCity">City:</label>
@@ -211,7 +213,7 @@
 	                </div>
 	                <div class="form-group">
 	                    <label for="BillingAddress2">Address 2:</label>
-	                    <input type="text" class="form-control" name="BillingAddress2" id="BillingAddress2" placeholder="Enter Address 2" required>
+	                    <input type="text" class="form-control" name="BillingAddress2" id="BillingAddress2" placeholder="Enter Address 2">
 	                </div>
 	                <div class="form-group">
 	                    <label for="BillingCity">City:</label>
@@ -241,16 +243,11 @@
 	                    <label for="ExpirationYear">Expiration Year:</label>
 	                    <input type="number" class="form-control" id="ExpirationYear" name="ExpirationYear" placeholder="Enter 4 Digit Card Expiration Year" required>
 	                </div>
-				<div class="dropdown pull-right">
-  					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-    					Shipping Method
-    					<span class="caret"></span>
-  					</button>
-				  	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-				    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Overnight</a></li>
-				    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Express</a></li>
-				    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ground</a></li>
-				  	</ul>
+					<select name="shipping_method">		
+						<option value="1">Overnight</option>
+					  	<option value="2">Express</option>
+					  	<option value="3" selected="selected">Ground</option>
+					</select>
 	                <input type="submit" name="submit" id="submit" value="Pay" class="btn btn-info pull-right">
 				</div>
 

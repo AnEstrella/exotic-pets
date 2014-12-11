@@ -22,7 +22,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-          	<li><a href="admin_controller">Login</a></li>
+          	<li><a href="/admin_controller">Login</a></li>
             <li><a href="shop_cart">Shopping Cart (#)</a></li>
           </ul>
         </div><!-- /.nav-collapse -->
@@ -59,7 +59,7 @@
 	</form>
 	<h4>Categories</h4>
 	<ul>
-		<li><a href="/">All (#)</a></li>
+		<li><a href="/">All (<?= $item_count[0]['total'] ?>)</a></li>
 		<?php 
 			foreach(array_reverse($categories) as $category) {?>
 			<li>
@@ -100,9 +100,9 @@
  		<p>
 	 		Sort By:
 		 		<select id="sort_by_dropdown" name="sort_by_dropdown">
+		 			<option value="name">Name</option>
 		 			<option value="price">Price</option>
 		 			<option value="most popular">Most Popular</option>
-		 			<option value="name">Name</option>
 		 		</select>
 		</p>
 		 		<!-- <input type="submit" value="Sort"> -->
@@ -111,6 +111,7 @@
  	<div id="product-images">
 	    <ul>
 		<?php 
+		// set 0 to start item
 		foreach(array_slice($items, 0,15) as $item) {
 			if(!isset($item['item_id'])){?>
 				<li>
@@ -135,16 +136,40 @@
   </div>
   <div id="grid-footer">
     <ul class="nav navbar-nav">
-      <li><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">5</a></li>
-      <li><a href="#">6</a></li>
-      <li><a href="#">7</a></li>
-      <li><a href="#">8</a></li>
-      <li><a href="#">9</a></li>
-      <li><a href="#">10</a></li>
+
+<?php 
+	if(isset($items[0]['id'])){
+  	$item_count = $item_count[0]['total'];
+  	}
+  	else
+  	{
+ //replace with selected category count 
+  	$item_count = 0;
+  	}
+  	$articlesPerPage = 15;
+  	$total_pages = ceil($item_count / $articlesPerPage); 
+  	// Check that the page number is set.
+	if(!isset($_GET['page'])){
+    $_GET['page'] = 0;
+	}
+	else{
+    // Convert the page number to an integer
+    $_GET['page'] = (int)$_GET['page'];
+	}
+	// If the page number is less than 1, make it 1.
+	if($_GET['page'] < 1){
+    $_GET['page'] = 1;
+    // Check that the page is below the last page
+	}
+	else if($_GET['page'] > $total_pages){
+    $_GET['page'] = $total_pages;
+	}
+	foreach(range(1, $total_pages) as $page){
+    if($page == 1 || $page == $total_pages || ($page >= $_GET['page'] - 2 && $page <= $_GET['page'] + 2)){ ?>
+    <!-- page link
+	/shop_products/php echo $items[0]['id'] php close-->
+      <li><a href="#"><?= $page ?></a></li>
+      <?}}?>
     </ul>
   </div>
 </div>
