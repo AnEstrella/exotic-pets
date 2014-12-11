@@ -175,7 +175,7 @@
 	                </div>
 	                <div class="form-group">
 	                    <label for="ShippingAddress2">Address 2:</label>
-	                    <input type="text" class="form-control" name="ShippingAddress2" id="ShippingAddress2" placeholder="Enter Address 2" required>
+	                    <input type="text" class="form-control" name="ShippingAddress2" id="ShippingAddress2" placeholder="Enter Address 2">
 	                </div>
 	                <div class="form-group">
 	                    <label for="ShippingCity">City:</label>
@@ -213,7 +213,7 @@
 	                </div>
 	                <div class="form-group">
 	                    <label for="BillingAddress2">Address 2:</label>
-	                    <input type="text" class="form-control" name="BillingAddress2" id="BillingAddress2" placeholder="Enter Address 2" required>
+	                    <input type="text" class="form-control" name="BillingAddress2" id="BillingAddress2" placeholder="Enter Address 2">
 	                </div>
 	                <div class="form-group">
 	                    <label for="BillingCity">City:</label>
@@ -243,16 +243,11 @@
 	                    <label for="ExpirationYear">Expiration Year:</label>
 	                    <input type="number" class="form-control" id="ExpirationYear" name="ExpirationYear" placeholder="Enter 4 Digit Card Expiration Year" required>
 	                </div>
-				<div class="dropdown pull-right">
-  					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-    					Shipping Method
-    					<span class="caret"></span>
-  					</button>
-				  	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-				    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Overnight</a></li>
-				    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Express</a></li>
-				    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ground</a></li>
-				  	</ul>
+					<select name="shipping_method">		
+						<option value="1">Overnight</option>
+					  	<option value="2">Express</option>
+					  	<option value="3" selected="selected">Ground</option>
+					</select>
 	                <input type="submit" name="submit" id="submit" value="Pay" class="btn btn-info pull-right">
 				</div>
 

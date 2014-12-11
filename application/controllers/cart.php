@@ -1,8 +1,8 @@
 <?php
 /**
- * 		Ecommerce Webiste Project 
+ * 		ePets ECommerce Webiste Project 
  *  
- *		Shopping Cart Controller - EPets Commerce Website
+ *		Shopping Cart Controller 
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -11,8 +11,7 @@ class Cart extends CI_Controller
 {
 	public function index()
 	{
-		//$this->output->enable_profiler(TRUE);
-		//$this->load->model("CartDB");
+		// $this->output->enable_profiler(TRUE);
 		$this->load->view('shop_cart');
 	}
 
@@ -56,7 +55,7 @@ class Cart extends CI_Controller
 	public function submitOrder()
 	{
 		$this->input->post(NULL, TRUE); // returns all POST items with XSS filter
-
+	
 		// Validate Shipping and Billing Information
 
 		$this->load->helper(array('form', 'url'));
@@ -68,7 +67,7 @@ class Cart extends CI_Controller
 		$this->form_validation->set_rules("Password", "Password", 'trim|required|min_length[5]|matches[PasswordConfirm]|md5');
 		$this->form_validation->set_rules("PasswordConfirm", "Confirm Password", 'required');
 		$this->form_validation->set_rules("ShippingAddress", "Shipping Address", 'required');
-		$this->form_validation->set_rules("ShippingAddress2", "Shipping Address2", 'required');
+		$this->form_validation->set_rules("ShippingAddress2", "Shipping Address2", 'trim');
 		$this->form_validation->set_rules("ShippingCity", "Shipping City", 'required');
 		$this->form_validation->set_rules("ShippingState", "Shipping State", 'required');
 		$this->form_validation->set_rules("ShippingZipcode", "Shipping Address", 'numeric|required');
@@ -76,7 +75,7 @@ class Cart extends CI_Controller
 		$this->form_validation->set_rules("BillingFirstName", "Billing First Name", 'trim|required');
 		$this->form_validation->set_rules("BillingLastName", "Billing Last Name", 'trim|required');
 		$this->form_validation->set_rules("BillingAddress", "Billing Address", 'required');
-		$this->form_validation->set_rules("BillingAddress2", "Billing Address2", 'required');
+		$this->form_validation->set_rules("BillingAddress2", "Billing Address2", 'trim');
 		$this->form_validation->set_rules("BillingCity", "Billing City", 'required');
 		$this->form_validation->set_rules("BillingState", "Billing State", 'required');
 		$this->form_validation->set_rules("BillingZipcode", "Billing Zip Code", 'required');
@@ -92,7 +91,65 @@ class Cart extends CI_Controller
 			$this->session->set_flashdata("registration_error", validation_errors());
 			redirect('/');
 		}
+
+		// Simulate running credit card....
+
+		// Add new purchase to database
+
+		$this->load->model("customer");
+
+		$new_customer = array(
+							"email" => $this->input->post('Email'),
+							"password" => $this->input->post('Password') 
+						);
+
+		$new_customer_id =  $this->customer->add_customer($new_customer);
+
+		$customer_info = array(
+							"customer_id" => $new_customer_id,
+							"first_name" => $this->input->post('BillingFirstName'),
+							"last_name" => $this->input->post('BillingLastName'),
+							"billing_address" => $this->input->post('BillingAddress'),
+							"city" => $this->input->post('BillingCity'),
+							"state" => $this->input->post('BillingState'),
+							"zip_code" => $this->input->post('BillingZipcode')
+							);
 	
+		$add_customer_info = $this->customer->add_customer_info($customer_info);
+		
+
+		// Update Orders
+
+		$shipping_address = $this->input->post('ShippingAddress') . " " . $this->input->post('ShippingCity') . "," . 
+							$this->input->post('ShippingState') . "  " . $this->input->post('ShippingZipcode');
+
+		$shipping_method = $this->input->post('shipping_method');
+		$shipping_cost = $this->customer->getShippingCost($shipping_method);
+		$new_order = array(
+						"status" => "Shipped",
+						"total_price" => intval($this->session->userdata("total_price")) + intval($shipping_cost),
+						"shipping_address" => $shipping_address,
+						"customer_id" => $new_customer_id,
+						"shipping_method_id" => $shipping_method
+					);
+		
+		$new_order_id = $this->customer->addNewOrder($new_order);
+
+		//  Update Items inventory
+
+		$cart = $this->session->userdata("cart");
+
+		foreach ($cart as $item)
+			$this->customer->updateItemsInventory($item, $new_order_id);
+
+		// Zero cart - FIXME (Add a flashdata confirmation message that order approved/shipped)
+
+		$this->session->set_userdata('total_items',0);
+        $this->session->set_userdata('total_price',0);
+  		$this->session->unset_userdata('cart');
+
+		redirect('/');
+		
 	}
 
 }
