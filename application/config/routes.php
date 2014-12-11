@@ -57,6 +57,8 @@ $route['shop_showitem/(:num)/(:any)'] = '/process/shop_showitem/$1/$2';
 $route['deleteItem/(:num)'] = '/admin_controller/deleteItem/$1';
 $route['sort_items/(:num)'] = '/process/sort_items/$1';
 $route['searchitem'] = '/process/searchitem';
+$route['logOff'] = '/admin_controller/logOff';
+$route['signin'] = 'admin_controller/index';
 $route['404_override'] = '';
 
 

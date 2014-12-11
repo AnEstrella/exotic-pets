@@ -18,7 +18,10 @@ class Process extends CI_Controller {
 	public function shop_products($category_id)
 	{
 		$items = $this->Item->get_items_by_categoryid($category_id); 
+
+
 		//$items_per_page = $this->Item->items_per_page();
+
 		$item_count = $this->Item->item_count();
 		$this->load->model('Category');
 		$categories = $this->Category->get_all_categories();

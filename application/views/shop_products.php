@@ -23,7 +23,11 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
           	<li><a href="/admin_controller">Login</a></li>
+<<<<<<< HEAD
+            <li><a href="shop_cart">Shopping Cart (#)</a></li>
+=======
             <li><a href="shop_cart">Shopping Cart (2)</a></li>
+>>>>>>> feae9d751948269db3c1212f17a5c2433aab5075
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
