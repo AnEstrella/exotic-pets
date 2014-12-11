@@ -76,9 +76,4 @@ class Admin_Model extends CI_Model
 	{
 		$query = "UPDATE orders SET status = ? WHERE id= ? and customer_id = ? and shipping_method_id = ?";
 	}
-	function pagination()
-	{
-		$this->load->library('pagination');
-		echo $this->pagination->create_links();
-	}
 }
