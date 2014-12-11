@@ -35,6 +35,17 @@ class Process extends CI_Controller {
 		$categories = $this->Category->get_all_categories();
 		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories, 'item_count'=>$item_count));
 	}
+	public function pagination()
+	{
+		$this->load->library('pagination');
+		$config['base_url'] = 'http://example.com/index.php/test/page/';
+		$config['total_rows'] = 200;
+		$config['per_page'] = 15; 
+
+		$this->pagination->initialize($config); 
+
+		echo $this->pagination->create_links();
+	}
 	public function register()
 	{
 		$this->load->library("form_validation");
@@ -72,10 +83,11 @@ class Process extends CI_Controller {
 					redirect('/');
 		}
 	}
-	public function shop_showitem($item_id)
+	public function shop_showitem($item_id, $cat_id)
 	{
 		$items = $this->Item->getitem_by_id($item_id); 
-		$this->load->view('shop_showitem', array('items'=>$items));
+		$similar_items = $this->Item->get_items_by_categoryid($cat_id);
+		$this->load->view('shop_showitem', array('items'=>$items, 'similar_items'=>$similar_items, 'cat_id'=>$cat_id));
 	}
 	// public function sort_items()
 	// {
