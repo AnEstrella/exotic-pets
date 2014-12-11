@@ -99,11 +99,14 @@
  	<div id="sort-dropdown" class="navbar-right">
  		<p>
 	 		Sort By:
-		 		<select id="sort_by_dropdown" name="sort_by_dropdown">
+	 		<form action="sort_items" method="get">
+		 		<select id="sort_by_dropdown" name="sort_by">
 		 			<option value="name">Name</option>
 		 			<option value="price">Price</option>
-		 			<option value="most popular">Most Popular</option>
+		 			<option value="total_sold">Most Popular</option>
+		 			<input type="submit" value="Sort">
 		 		</select>
+		 	</form >
 		</p>
 		 		<!-- <input type="submit" value="Sort"> -->
  	</div>

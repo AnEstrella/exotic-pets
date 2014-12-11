@@ -35,6 +35,14 @@ class Process extends CI_Controller {
 		$categories = $this->Category->get_all_categories();
 		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories, 'item_count'=>$item_count));
 	}
+	public function sort_items()
+	{
+		$items = $this->Item->sort_items($this->input->get('sort_by')); 
+		$item_count = $this->Item->item_count();
+		$this->load->model('Category');
+		$categories = $this->Category->get_all_categories();
+		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories, 'item_count'=>$item_count));
+	}
 	public function pagination()
 	{
 		$this->load->library('pagination');
