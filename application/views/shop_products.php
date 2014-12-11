@@ -7,16 +7,7 @@
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-
-
-<script>
-$("#sort_by_dropdown").change(function() {
-  alert( "Handler for .change() called." );
-});
-</script>
-
 </head>
-
 <body>
 	<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
       <div class="container">
@@ -31,6 +22,7 @@ $("#sort_by_dropdown").change(function() {
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
+          	<li><a href="admin_controller">Login</a></li>
             <li><a href="shop_cart">Shopping Cart (#)</a></li>
           </ul>
         </div><!-- /.nav-collapse -->
@@ -38,9 +30,32 @@ $("#sort_by_dropdown").change(function() {
     </nav>
 
 <div id="categories">
-	<form class="form-search form-inline">
-	<input type="search-query" placeholder="product name" class="form-control">
-	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+<!-- AJAX
+<script>
+	//   $(document).ready(function(){
+	//    $('#keyword').submit(function(){
+	// 	$('#product-images').html('');
+	// 	$.post( 
+	//       $('#search').attr('action'),
+	//       $('#search').serialize(),
+	//       function(output){
+	//       	for (var i=0; i<output.length; i++)
+	//       	{
+	//       		$('#product-images').append(
+	//       				// add this to div
+	//       			);
+	//       	}
+	//       }, 'json'
+	//     );
+	//     return false;
+	//    });
+	//   });
+</script>
+-->	
+		
+	<form class="form-search form-inline" id="search" method="get" action="/searchitem">
+		<input id="keyword" name="q" type="text" placeholder="product name" class="form-control">
+		<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 	</form>
 	<h4>Categories</h4>
 	<ul>
@@ -76,15 +91,21 @@ $("#sort_by_dropdown").change(function() {
 		    </ul>
 		</div>
  	</div>
+<script>
+	$("#sort_by_dropdown").change(function() {
+	  alert( "Handler for .change() called." );
+	});
+</script>
  	<div id="sort-dropdown" class="navbar-right">
  		<p>
 	 		Sort By:
-	 		<select class="sort_by_dropdown">
-	 			<option value="price">Price</option>
-	 			<option value="most popular">Most Popular</option>
-	 			<option value="name">Name</option>
-	 		</select>
- 		</p>
+		 		<select id="sort_by_dropdown" name="sort_by_dropdown">
+		 			<option value="price">Price</option>
+		 			<option value="most popular">Most Popular</option>
+		 			<option value="name">Name</option>
+		 		</select>
+		</p>
+		 		<!-- <input type="submit" value="Sort"> -->
  	</div>
 
  	<div id="product-images">
@@ -114,16 +135,16 @@ $("#sort_by_dropdown").change(function() {
   </div>
   <div id="grid-footer">
     <ul class="nav navbar-nav">
-      <li><a href="shop_cart">1</a></li>
-      <li><a href="shop_cart">2</a></li>
-      <li><a href="shop_cart">3</a></li>
-      <li><a href="shop_cart">4</a></li>
-      <li><a href="shop_cart">5</a></li>
-      <li><a href="shop_cart">6</a></li>
-      <li><a href="shop_cart">7</a></li>
-      <li><a href="shop_cart">8</a></li>
-      <li><a href="shop_cart">9</a></li>
-      <li><a href="shop_cart">10</a></li>
+      <li><a href="#">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">5</a></li>
+      <li><a href="#">6</a></li>
+      <li><a href="#">7</a></li>
+      <li><a href="#">8</a></li>
+      <li><a href="#">9</a></li>
+      <li><a href="#">10</a></li>
     </ul>
   </div>
 </div>

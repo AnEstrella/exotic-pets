@@ -5,7 +5,7 @@ class Process extends CI_Controller {
 	public function index()
 	{
 		$items = $this->Item->get_all_items(); 
-<<<<<<< HEAD
+
 		$categories = $this->Category->get_all_categories();
 		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories));
 		//=======
@@ -17,7 +17,7 @@ class Process extends CI_Controller {
 		$this->load->model('Category');
 		$categories = $this->Category->get_all_categories();
 		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories));
->>>>>>> fedf2c67ce210241bbf51367532d6e769e56bde3
+
 	}
 	public function register()
 	{
@@ -68,6 +68,20 @@ class Process extends CI_Controller {
 		$items = $this->Item->getitem_by_id($item_id); 
 		$this->load->view('shop_showitem', array('items'=>$items));
 	}
+	public function searchitem($keyword)
+	{
+		$items = $this->Item->searchitem($keyword); 
+		$this->load->model('Category');
+		$categories = $this->Category->get_all_categories();
+		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories));
+	}
+	// public function sort_items()
+	// {
+	// 	$items = $this->input->post('sort_by_dropdown');
+	// 	$this->load->model('Item');
+	// 	$data['items'] = $this->Item->sort_item($items);
+	// 	echo json_encode($data);
+	// }
 }
 
 /* End of file welcome.php */
