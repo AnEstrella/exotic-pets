@@ -16,7 +16,7 @@ class Item extends CI_Model {
      }
      function searchitem($keyword)
      {
-          return $this->db->query("SELECT * FROM items WHERE name LIKE '%$keyword%'")->result_array();
+          return $this->db->query("SELECT * FROM items JOIN categories_has_items ON categories_has_items.item_id = items.id JOIN categories ON categories.id = categories_has_items.category_id WHERE name LIKE '%$keyword%' GROUP BY name")->result_array();
      }
      function item_count()
      {
