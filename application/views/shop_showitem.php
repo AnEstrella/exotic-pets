@@ -65,12 +65,9 @@
 	<div id="similar-items" class="col-md-12">
 		<h4>Similar Items</h4>
 		 <ul>
+<?php foreach(array_slice($similar_items, 0,5) as $similar_item) {?>
 	      <li><img src="#" height="120px" width="120px"><p>Item 1</p></li>
-	      <li><img src="#" height="120px" width="120px"><p>Item 2</p></li>
-	      <li><img src="#" height="120px" width="120px"><p>Item 3</p></li>
-	      <li><img src="#" height="120px" width="120px"><p>Item 4</p></li>
-	      <li><img src="#" height="120px" width="120px"><p>Item 5</p></li>
-	      <li><img src="#" height="120px" width="120px"><p>Item 6</p></li>
+	      <?}?>
 	  	</ul>
 	</div>
 </body>
