@@ -9,7 +9,7 @@ class Process extends CI_Controller {
             $this->session->set_userdata('total_items',0);
             $this->session->set_userdata('total_price',0);
         }
-        		
+        
 		$items = $this->Item->get_all_items(); 
 		$this->load->model('Category');
 		$categories = $this->Category->get_all_categories();
