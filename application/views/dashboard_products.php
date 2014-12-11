@@ -4,8 +4,16 @@
 	<link rel="stylesheet" type='text/css'href='/assets/css/bootstrap.css'>
 	<link rel="stylesheet" type="text/css" href="/assets/css/admin_style.css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){
+	$('#delete_button').on('click', function (e) {
+    $('#confirm')
+        .modal({ backdrop: 'static', keyboard: false })
+        .one('click', '#delete', function (e) {
+            //delete function
+        });
+	});
 		$(document).on('keyup', '#products_form', function(){
 			$('#table_body').html('');
 			$.post(
@@ -67,15 +75,53 @@
 						<td><?=$product['name']?></td>
 						<td class='small_column'><?=$product['inventory_count']?></td>
 						<td class='small_column'><?=$product['total_sold']?></td>
-						<form method='post' action='<?=base_url("/deleteItem/{$product['id']}")?>'>
-							<td><input type='submit' class='btn btn-warning' value='Edit'>  <input type='submit' class='btn btn-danger' value='Delete'>
-					
-						</form>
+							<td><input type='submit' class='btn btn-warning' value='Edit'>  <button class='btn btn-danger' data-href='<?=base_url("/deleteItem/{$product['id']}")?>' data-toggle="modal" data-target="#confirm-delete" href='<?=base_url("{$product['id']}")?>'>Delete</a></button>
 					</tr>
 <?php } ?>
 				</tbody>
 			</table>
 		</div>
+
+    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+                </div>
+            
+                <div class="modal-body">
+                    <p>You are about to delete this item. Are you sure you want to do this?</p>
+                    <p>Do you want to proceed?</p>
+                    <p class="debug-url"></p>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <a href="#" class="btn btn-danger danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+
+    <script>
+        $('#confirm-delete').on('show.bs.modal', function(e) {
+            $(this).find('.danger').attr('href', $(e.relatedTarget).data('href'));
+            
+            $('.debug-url').html('Delete URL: <strong>' + $(this).find('.danger').attr('href') + '</strong>');
+        })
+    </script>
+
+
+
+
+
+
 <nav>
   <ul class="pagination pagination-lg">
     <li><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>

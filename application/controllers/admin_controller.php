@@ -4,8 +4,7 @@ class Admin_Controller extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->model('Admin_Model');
-		$this->load->view('dashboard_orders', array('orders' => $this->Admin_Model->show_all_orders()));
+		$this->load->view('signin');
 	}
 	public function admin_login()
 	{
@@ -21,7 +20,8 @@ class Admin_Controller extends CI_Controller {
 				'is_logged_in'=> true
 				);
 			$this->session->set_userdata($user);
-			$this->load->view('dashboard_orders');
+			$this->load->model('Admin_Model');
+			$this->load->view('dashboard_orders', array('orders' => $this->Admin_Model->show_all_orders()));
 		}
 		else
 		{
@@ -78,7 +78,8 @@ class Admin_Controller extends CI_Controller {
 	{
 		$this->load->model('Admin_Model');
 		$delete_item = $this->Admin_Model->deleteItem($id);
-		redirect('/');
+		$this->load->view('dashboard_products', array('products' => $this->Admin_Model->showProducts()));
+
 	}
 	public function updateStatus($id)
 	{
