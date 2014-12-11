@@ -30,10 +30,14 @@ class Item extends CI_Model {
      {
         return $this->db->query("SELECT * FROM items LIMIT {$startArticle},15")->results_array();
      }
-     // function sortitems_by_price()
-     // {
-     //      return $this->db->query("SELECT * FROM items JOIN categories_has_items ON categories_has_items.item_id = items.id JOIN categories ON categories.id = categories_has_items.category_id WHERE categories.id = {$id} ORDER BY price ASC")->result_array();
-     // }
+    function sort_items($sort_by)
+     {
+          return $this->db->query("SELECT * FROM items JOIN categories_has_items ON categories_has_items.item_id = items.id JOIN categories ON categories.id = categories_has_items.category_id GROUP by name ORDER BY {$sort_by} DESC")->result_array();
+     }
+     function sort_items_c($sort_by)
+     {
+          return $this->db->query("SELECT * FROM items JOIN categories_has_items ON categories_has_items.item_id = items.id JOIN categories ON categories.id = categories_has_items.category_id WHERE categories.id = {$id} ORDER BY {$sort_by} ASC")->result_array();
+     }
      // function sortitems_by_popularity()
      // {
      //      return $this->db->query("SELECT * FROM items JOIN categories_has_items ON categories_has_items.item_id = items.id JOIN categories ON categories.id = categories_has_items.category_id WHERE categories.id = {$id} ORDER BY total_sold ASC")->result_array();
