@@ -5,15 +5,6 @@ class Process extends CI_Controller {
 	public function index()
 	{
 		$items = $this->Item->get_all_items(); 
-
-		$categories = $this->Category->get_all_categories();
-		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories));
-		//=======
-		//$this->load->view('signin');
-		//>>>>>>> 23ff019e5d8386126ffc396e59aea94288120601
-
-		$this->load->view('shop_products', array('items'=>$items));
-=======
 		$this->load->model('Category');
 		$categories = $this->Category->get_all_categories();
 		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories));
@@ -70,7 +61,6 @@ class Process extends CI_Controller {
 	}
 	public function searchitem()
 	{
-		//$keyword = $this->input->get('q');
 		$items = $this->Item->searchitem($this->input->get('q'));
 		$this->load->model('Category');
 		$categories = $this->Category->get_all_categories();
