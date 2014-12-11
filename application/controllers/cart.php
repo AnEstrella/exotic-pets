@@ -12,7 +12,6 @@ class Cart extends CI_Controller
 	public function index()
 	{
 		//$this->output->enable_profiler(TRUE);
-		$this->load->model("CartDB");
 		$this->load->view('shop_cart');
 	}
 
@@ -24,7 +23,7 @@ class Cart extends CI_Controller
 		if ($numitems != 0) 
 			$this->addToCart($this->session->userdata('item'), $numitems);
 
-		redirect('index',"refresh");
+		redirect('/');
 	}
 
 	public function addToCart($item, $numitems)
