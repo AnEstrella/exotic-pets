@@ -76,8 +76,4 @@ class Admin_Model extends CI_Model
 	{
 		$query = "UPDATE orders SET status = ? WHERE id= ? and customer_id = ? and shipping_method_id = ?";
 	}
-	function pagination()
-	{
-		$query = "SELECT * FROM items LIMIT 30 OFFSET " . i * 30;
-	}
 }

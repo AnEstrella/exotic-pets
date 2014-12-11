@@ -16,7 +16,7 @@ class Item extends CI_Model {
      }
      function searchitem($keyword)
      {
-          return $this->db->query("SELECT * FROM items WHERE name LIKE '$keyword%'")->result_array();
+          return $this->db->query("SELECT * FROM items WHERE name LIKE '%$keyword%'")->result_array();
      }
      // function sortitems_by_price()
      // {
