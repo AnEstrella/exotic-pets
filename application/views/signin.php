@@ -30,6 +30,7 @@
   <div class='container-fluid' id='admin_login_header_box'>
     <div class='navbar-header'>
       <h3 id='admin_login'>Admin Login</h3>
+      <a href='/process/index' class='home_link'>Home</a>
     </div>
   </div>
 </nav>
