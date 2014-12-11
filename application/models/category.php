@@ -4,6 +4,6 @@ class Category extends CI_Model {
 
      function get_all_categories()
      {
-        return $this->db->query("SELECT * FROM categories")->result_array();
+        return $this->db->query("SELECT * FROM categories ORDER BY type DESC")->result_array();
      }
 }
