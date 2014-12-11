@@ -4,7 +4,7 @@ class Item extends CI_Model {
 
      function get_all_items()
      {
-        return $this->db->query("SELECT * FROM items JOIN categories_has_items ON categories_has_items.item_id = items.id JOIN categories ON categories.id = categories_has_items.category_id ORDER BY items.name ASC")->result_array();
+        return $this->db->query("SELECT * FROM items JOIN categories_has_items ON categories_has_items.item_id = items.id JOIN categories ON categories.id = categories_has_items.category_id GROUP BY items.name ORDER BY items.name ASC")->result_array();
      }
      function getitem_by_id($id)
      {
