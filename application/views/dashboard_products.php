@@ -7,13 +7,6 @@
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){
-	$('#delete_button').on('click', function (e) {
-    $('#confirm')
-        .modal({ backdrop: 'static', keyboard: false })
-        .one('click', '#delete', function (e) {
-            //delete function
-        });
-	});
 		$(document).on('keyup', '#products_form', function(){
 			$('#table_body').html('');
 			$.post(
