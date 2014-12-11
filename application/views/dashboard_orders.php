@@ -22,15 +22,15 @@
 					{
 						if (val.status === 'Shipped')
 						{
-							$('#table_body').append("<tr><td>" + "<a href='/viewOrder/" + val.order_id + "'>" + val.order_id + "</a></td><td>" + val.first_name + " " + val.last_name + "</td><td>" + val.ordered_on + "</td><td>" + val.billing_address + ", " + val.city + ", " + val.state + " " + val.zip_code + "</td><td>" + val.total_price + "</td><td><div class='btn-group'><button type='button' class='btn btn-success dropdown-toggle' data-toggle'dropdown' aria-expanded='false'>"+"Shipped <span class='caret'></span>"+"</button>"+"<ul class='dropdown-menu' role='menu'>"+"<li><a href='#'>Processing</a></li>"+"<li><a href='#''>Canceled</a></li>"+"</ul>"+"</div></td></tr>")
+							$('#table_body').append("<tr><td>" + "<a href='/viewOrder/" + val.order_id + "'>" + val.order_id + "</a></td><td>" + val.first_name + " " + val.last_name + "</td><td>" + val.ordered_on + "</td><td>" + val.billing_address + ", " + val.city + ", " + val.state + " " + val.zip_code + "</td><td>" + val.total_price + "</td><td><form method='post' action='/updateStatus/" + val.order_id + "'><select class='btn btn-success' name='order_dropdown' id='table_order_dropdown'><option value='Shipped'>Shipped</option><option value='Processing'>Processing</option><option value='Canceled'>Canceled</option></select></form></td></tr>")
 						}
 						else if (val.status === 'Processing')
 						{
-							$('#table_body').append("<tr><td>" + "<a href='/viewOrder/" + val.order_id + "'>" + val.order_id + "</a></td><td>" + val.first_name + " " + val.last_name + "</td><td>" + val.ordered_on + "</td><td>" + val.billing_address + ", " + val.city + ", " + val.state + " " + val.zip_code + "</td><td>" + val.total_price + "</td><td><div class='btn-group'><button type='button' class='btn btn-info dropdown-toggle' data-toggle'dropdown' aria-expanded='false'>"+"Processing <span class='caret'></span>"+"</button>"+"<ul class='dropdown-menu' role='menu'>"+"<li><a href='#'>Shipped</a></li>"+"<li><a href='#''>Canceled</a></li>"+"</ul>"+"</div></td></tr>")
+							$('#table_body').append("<tr><td>" + "<a href='/viewOrder/" + val.order_id + "'>" + val.order_id + "</a></td><td>" + val.first_name + " " + val.last_name + "</td><td>" + val.ordered_on + "</td><td>" + val.billing_address + ", " + val.city + ", " + val.state + " " + val.zip_code + "</td><td>" + val.total_price + "</td><td><form method='post' action='/updateStatus/" + val.order_id + "'><select class='btn btn-info' name='order_dropdown' id='table_order_dropdown'><option value='Processing'>Processing</option><option value='Shipped'>Shipped</option><option value='Canceled'>Canceled</option></select></form></td></tr>")
 						}
 						else if (val.status === 'Canceled')
 						{
-							$('#table_body').append("<tr><td>" + "<a href='/viewOrder/" + val.order_id + "'>" + val.order_id + "</a></td><td>" + val.first_name + " " + val.last_name + "</td><td>" + val.ordered_on + "</td><td>" + val.billing_address + ", " + val.city + ", " + val.state + " " + val.zip_code + "</td><td>" + val.total_price + "</td><td><div class='btn-group'><button type='button' class='btn btn-danger dropdown-toggle' data-toggle'dropdown' aria-expanded='false'>"+"Canceled <span class='caret'></span>"+"</button>"+"<ul class='dropdown-menu' role='menu'>"+"<li><a href='#'>Processing</a></li>"+"<li><a href='#''>Shipped</a></li>"+"</ul>"+"</div></td></tr>")
+							$('#table_body').append("<tr><td>" + "<a href='/viewOrder/" + val.order_id + "'>" + val.order_id + "</a></td><td>" + val.first_name + " " + val.last_name + "</td><td>" + val.ordered_on + "</td><td>" + val.billing_address + ", " + val.city + ", " + val.state + " " + val.zip_code + "</td><td>" + val.total_price + "</td><td><form method='post' action='/updateStatus/" + val.order_id + "'><select class='btn btn-danger' name='order_dropdown' id='table_order_dropdown'><option value='Canceled'>Canceled</option><option value='Processing'>Processing</option><option value='Shipped'>Shipped</option></select></form></td></tr>")
 						}
 					});
 				},
@@ -38,6 +38,37 @@
 				);
 			return false;
 		});
+			
+				$(document).on('change', '.update_form', function(){	
+			$.post(
+				$(this).attr("action"),
+				$(this).serialize(),
+				function(orders_sorted)
+				{
+					alert('hi');
+					jQuery.each(orders_sorted['orders'], function(i, val)
+					{				
+						if (val.status === 'Shipped')
+						{
+							$('#table_body').append("safasdfsadfs<tr><td>" + "<a href='/viewOrder/" + val.order_id + "'>" + val.order_id + "</a></td><td>" + val.first_name + " " + val.last_name + "</td><td>" + val.ordered_on + "</td><td>" + val.billing_address + ", " + val.city + ", " + val.state + " " + val.zip_code + "</td><td>" + val.total_price + "</td><td><form method='post' action='/updateStatus/" + val.order_id + "'><select class='btn btn-success' name='order_dropdown' id='table_order_dropdown'><option value='Shipped'>Shipped</option><option value='Processing'>Processing</option><option value='Canceled'>Canceled</option></select></td></tr>")
+						}
+						else if (val.status === 'Processing')
+						{
+							$('#table_body').append("<tr><td>" + "<a href='/viewOrder/" + val.order_id + "'>" + val.order_id + "</a></td><td>" + val.first_name + " " + val.last_name + "</td><td>" + val.ordered_on + "</td><td>" + val.billing_address + ", " + val.city + ", " + val.state + " " + val.zip_code + "</td><td>" + val.total_price + "</td><td><form method='post' action='/updateStatus/" + val.order_id + "'><select class='btn btn-info' name='order_dropdown' id='table_order_dropdown'><option value='Processing'>Processing</option><option value='Shipped'>Shipped</option><option value='Canceled'>Canceled</option></select></td></tr>")
+						}
+						else if (val.status === 'Canceled')
+						{
+							$('#table_body').append("<tr><td>" + "<a href='/viewOrder/" + val.order_id + "'>" + val.order_id + "</a></td><td>" + val.first_name + " " + val.last_name + "</td><td>" + val.ordered_on + "</td><td>" + val.billing_address + ", " + val.city + ", " + val.state + " " + val.zip_code + "</td><td>" + val.total_price + "</td><td><form method='post' action='/updateStatus/" + val.order_id + "'><select class='btn btn-danger' name='order_dropdown' id='table_order_dropdown'><option value='Canceled'>Canceled</option><option value='Processing'>Processing</option><option value='Shipped'>Shipped</option></select></td></tr>")
+						}
+					});
+				},
+				"json"
+				);
+		return false;
+		});
+	
+
+
 		$(document).on('change', '#order_status_dropdown', function(){	
 			$('#table_body').html('');
 			$.post(
@@ -49,15 +80,15 @@
 					{				
 						if (val.status === 'Shipped')
 						{
-							$('#table_body').append("<tr><td>" + "<a href='/viewOrder/" + val.order_id + "'>" + val.order_id + "</a></td><td>" + val.first_name + " " + val.last_name + "</td><td>" + val.ordered_on + "</td><td>" + val.billing_address + ", " + val.city + ", " + val.state + " " + val.zip_code + "</td><td>" + val.total_price + "</td><td><div class='btn-group'><button type='button' class='btn btn-success dropdown-toggle' data-toggle'dropdown' aria-expanded='false'>"+"Shipped <span class='caret'></span>"+"</button>"+"<ul class='dropdown-menu' role='menu'>"+"<li><a href='#'>Processing</a></li>"+"<li><a href='#''>Canceled</a></li>"+"</ul>"+"</div></td></tr>")
+							$('#table_body').append("<tr><td>" + "<a href='/viewOrder/" + val.order_id + "'>" + val.order_id + "</a></td><td>" + val.first_name + " " + val.last_name + "</td><td>" + val.ordered_on + "</td><td>" + val.billing_address + ", " + val.city + ", " + val.state + " " + val.zip_code + "</td><td>" + val.total_price + "</td><td><form method='post' action='/updateStatus/" + val.order_id + "'><select class='btn btn-success' name='order_dropdown' id='table_order_dropdown'><option value='Shipped'>Shipped</option><option value='Processing'>Processing</option><option value='Canceled'>Canceled</option></select></td></tr>")
 						}
 						else if (val.status === 'Processing')
 						{
-							$('#table_body').append("<tr><td>" + "<a href='/viewOrder/" + val.order_id + "'>" + val.order_id + "</a></td><td>" + val.first_name + " " + val.last_name + "</td><td>" + val.ordered_on + "</td><td>" + val.billing_address + ", " + val.city + ", " + val.state + " " + val.zip_code + "</td><td>" + val.total_price + "</td><td><div class='btn-group'><button type='button' class='btn btn-info dropdown-toggle' data-toggle'dropdown' aria-expanded='false'>"+"Processing <span class='caret'></span>"+"</button>"+"<ul class='dropdown-menu' role='menu'>"+"<li><a href='#'>Shipped</a></li>"+"<li><a href='#''>Canceled</a></li>"+"</ul>"+"</div></td></tr>")
+							$('#table_body').append("<tr><td>" + "<a href='/viewOrder/" + val.order_id + "'>" + val.order_id + "</a></td><td>" + val.first_name + " " + val.last_name + "</td><td>" + val.ordered_on + "</td><td>" + val.billing_address + ", " + val.city + ", " + val.state + " " + val.zip_code + "</td><td>" + val.total_price + "</td><td><form method='post' action='/updateStatus/" + val.order_id + "'><select class='btn btn-info' name='order_dropdown' id='table_order_dropdown'><option value='Processing'>Processing</option><option value='Shipped'>Shipped</option><option value='Canceled'>Canceled</option></select></td></tr>")
 						}
 						else if (val.status === 'Canceled')
 						{
-							$('#table_body').append("<tr><td>" + "<a href='/viewOrder/" + val.order_id + "'>" + val.order_id + "</a></td><td>" + val.first_name + " " + val.last_name + "</td><td>" + val.ordered_on + "</td><td>" + val.billing_address + ", " + val.city + ", " + val.state + " " + val.zip_code + "</td><td>" + val.total_price + "</td><td><div class='btn-group'><button type='button' class='btn btn-danger dropdown-toggle' data-toggle'dropdown' aria-expanded='false'>"+"Canceled <span class='caret'></span>"+"</button>"+"<ul class='dropdown-menu' role='menu'>"+"<li><a href='#'>Processing</a></li>"+"<li><a href='#''>Shipped</a></li>"+"</ul>"+"</div></td></tr>")
+							$('#table_body').append("<tr><td>" + "<a href='/viewOrder/" + val.order_id + "'>" + val.order_id + "</a></td><td>" + val.first_name + " " + val.last_name + "</td><td>" + val.ordered_on + "</td><td>" + val.billing_address + ", " + val.city + ", " + val.state + " " + val.zip_code + "</td><td>" + val.total_price + "</td><td><form method='post' action='/updateStatus/" + val.order_id + "'><select class='btn btn-danger' name='order_dropdown' id='table_order_dropdown'><option value='Canceled'>Canceled</option><option value='Processing'>Processing</option><option value='Shipped'>Shipped</option></select></td></tr>")
 						}
 					});
 				},
@@ -90,7 +121,6 @@
 					</div>
 				</form>
 			</div>
-		</div>
 		<div class='row' id='table_row'>
 			<table class='table table-striped table-bordered'>
 				<thead>
@@ -111,43 +141,24 @@
 						<td><?=$order['ordered_on']?></td>
 						<td><?=$order['billing_address'] . ", " . $order['city'] . ", " . $order['state'] . " " . $order['zip_code']?></td>
 						<td>$<?=$order['total_price']?></td>
-<?php 
+<?php 			
 						if ($order['status'] == 'Shipped')
 						{?>
-							<td><div class="btn-group">
-							  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-							    Shipped <span class="caret"></span>
-							  </button>
-							  <ul class="dropdown-menu" role="menu">
-							    <li><a href="#">Processing</a></li>
-							    <li><a href="#">Canceled</a></li>
-							  </ul>
-							</div></td></tr>
-
+						<form method='post' name='test' class='update_form' action='/updateStatus/<?=$order['id']?>'>
+							<td><select class='btn btn-success' name='order_dropdown' id='table_order_dropdown'><option value='Shipped'>Shipped</option><option value='Processing'>Processing</option><option value='Canceled'>Canceled</option></select></td></tr> 
+						</form>
 <?php } 				else if ($order['status'] == 'Canceled')
 						{?>
-							<td><div class="btn-group">
-							  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-							    Canceled <span class="caret"></span>
-							  </button>
-							  <ul class="dropdown-menu" role="menu">
-							    <li><a href="#">Shipped</a></li>
-							    <li><a href="#">Processing</a></li>
-							  </ul>
-							</div></td></tr>
+						<form method='post'  action='/updateStatus/<?=$order['id']?>' class='update_form'>
+						<td><select class='btn btn-danger' name='order_dropdown' id='table_order_dropdown'><option value='Canceled'>Canceled</option><option value='Processing'>Processing</option><option value='Shipped'>Shipped</option></select></td></tr>
+						</form>
 <?php 			
 						} 
 						else if ($order['status'] == 'Processing')
 						{?>
-							<td><div class="btn-group">
-							  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-							    Processing <span class="caret"></span>
-							  </button>
-							  <ul class="dropdown-menu" role="menu">
-							    <li><a href="#">Shipped</a></li>
-							    <li><a href="#">Canceled</a></li>
-							  </ul>
-							</div></td></tr>					
+						<form method='post' class='update_form' action='/updateStatus/<?=$order['id']?>'>
+						<td><select class='btn btn-info' name='order_dropdown' id='table_order_dropdown'><option value='Processing'>Processing</option><option value='Shipped'>Shipped</option><option value='Canceled'>Canceled</option></select></td></tr>
+						</form>
 
 <?php 					} 
 				}?>

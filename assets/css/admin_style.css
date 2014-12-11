@@ -9,6 +9,10 @@
 	color: white;
 	font-size: 16px;
 }
+#InputProductDesc
+{
+	width: 550px;
+}
 	#orders_link
 	{
 		margin-left: 50px;
@@ -57,7 +61,13 @@
 {
 	display: inline-block;
 	height: 35px;
-	margin-left: 830px;
+	margin-left: 860px;
+}
+#table_order_dropdown
+{
+	display: inline-block;
+	height: 35px;
+	width: 110px;
 }
 form
 {

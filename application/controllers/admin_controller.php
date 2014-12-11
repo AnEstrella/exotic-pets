@@ -85,6 +85,9 @@ class Admin_Controller extends CI_Controller {
 	public function updateStatus($id)
 	{
 		$this->load->model('Admin_Model');
+		var_dump($this->input->post());
+		die();
+
 	}
 		public function logOff()
 	{

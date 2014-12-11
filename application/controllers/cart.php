@@ -23,7 +23,7 @@ class Cart extends CI_Controller
 		if ($numitems != 0) 
 			$this->addToCart($this->session->userdata('item'), $numitems);
 
-		redirect('/');
+		redirect('/shop_cart');
 	}
 
 	public function addToCart($item, $numitems)

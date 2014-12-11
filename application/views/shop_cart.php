@@ -86,7 +86,6 @@
 		<div class='row' id='table_row'>
 			<table class='table table-striped table-bordered'>
 				<thead>
-					<th>Item #</th>
 					<th>Item</th>
 					<th>Price</th>
 					<th>Quantity</th>
