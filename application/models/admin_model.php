@@ -78,7 +78,6 @@ class Admin_Model extends CI_Model
 	}
 	function pagination()
 	{
-		$this->load->library('pagination');
-		echo $this->pagination->create_links();
+		$query = "SELECT * FROM items LIMIT 30 OFFSET " . i * 30;
 	}
 }

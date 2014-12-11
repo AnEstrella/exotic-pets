@@ -5,7 +5,6 @@ class Process extends CI_Controller {
 	public function index()
 	{
 		$items = $this->Item->get_all_items(); 
-
 		$categories = $this->Category->get_all_categories();
 		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories));
 		//=======
@@ -13,7 +12,7 @@ class Process extends CI_Controller {
 		//>>>>>>> 23ff019e5d8386126ffc396e59aea94288120601
 
 		$this->load->view('shop_products', array('items'=>$items));
-=======
+
 		$this->load->model('Category');
 		$categories = $this->Category->get_all_categories();
 		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories));
