@@ -50,6 +50,8 @@
 {
 	overflow: scroll;
 	margin-left: 10px;
+	height: 400px;
+	border: 2px solid black;
 }
 #order_dropdown
 {

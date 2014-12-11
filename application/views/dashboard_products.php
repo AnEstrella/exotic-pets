@@ -16,8 +16,7 @@
 					jQuery.each(products['products'], function(i, val)
 					{
 						$('#table_body').append("<tr><td class='image_column'>" + "<img height='80' width='100' src='" + val.image_url + "'></a></td><td class='small_column'>" + val.id + "</td><td class='small_column'>" + val.name + "</td><td class='small'>" + val.inventory_count + "</td><td class='small'>" + val.total_sold + "</td><form method='post' action='/deleteItem/" + val.id + "'><td><input type='submit' class='btn btn-warning' value='Edit'> <input type='submit' class='btn btn-danger' value='Delete'></form>");
-																																																																						
-																																																																							
+																																																																																							
 					});
 				},
 				"json"
