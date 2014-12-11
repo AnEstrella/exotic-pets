@@ -23,7 +23,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
           	<li><a href="/admin_controller">Login</a></li>
-            <li><a href="shop_cart">Shopping Cart (#)</a></li>
+            <li><a href="shop_cart">Shopping Cart (2)</a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
@@ -79,14 +79,14 @@
 	  			else{?>
 	  			<?= $items[0]['type'] ?>
 	  			<?}?>
-	  			(page #)
+	  			(page 1)
 	  		</h2>
 	  	</div>
 	  	<div id="grid-header-right">
 		  	<ul class="navbar-right">
 		      <li><a href="#">first</a></li>
 		      <li><a href="#">prev</a></li>
-		      <li><a href="#">#</a></li>
+		      <li><a href="#">1</a></li>
 		      <li><a href="#">next</a></li>
 		    </ul>
 		</div>
