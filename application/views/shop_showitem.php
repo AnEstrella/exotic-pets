@@ -23,8 +23,15 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
           	<li><a href="/admin_controller">Login</a></li>
-            <li><a href="cart">Shopping Cart (#)</a></li>
-          </ul>
+           <li><a href="/cart">Shopping Cart (<?php
+
+            	if (FALSE == $this->session->userdata('total_items'))
+            		$this->session->set_userdata('total_items',0);
+
+            	echo $this->session->userdata('total_items') . ")";
+			?>
+            </a></li>
+           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </nav>

@@ -4,11 +4,32 @@ class Process extends CI_Controller {
 
 	public function index()
 	{
+		if (FALSE == $this->session->userdata('total_items'))
+		{
+            $this->session->set_userdata('total_items',0);
+            $this->session->set_userdata('total_price',0);
+        }
 		$items = $this->Item->get_all_items(); 
+		$item_count = $this->Item->item_count();
 		$this->load->model('Category');
 		$categories = $this->Category->get_all_categories();
-		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories));
-
+		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories, 'item_count'=>$item_count));
+	}
+	public function shop_products($category_id)
+	{
+		$items = $this->Item->get_items_by_categoryid($category_id); 
+		$item_count = $this->Item->item_count();
+		$this->load->model('Category');
+		$categories = $this->Category->get_all_categories();
+		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories, 'item_count'=>$item_count));
+	}
+	public function searchitem()
+	{
+		$item_count = $this->Item->item_count();
+		$items = $this->Item->searchitem($this->input->get('q'));
+		$this->load->model('Category');
+		$categories = $this->Category->get_all_categories();
+		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories, 'item_count'=>$item_count));
 	}
 	public function register()
 	{
@@ -47,24 +68,10 @@ class Process extends CI_Controller {
 					redirect('/');
 		}
 	}
-	public function shop_products($category_id)
-	{
-		$items = $this->Item->get_items_by_categoryid($category_id); 
-		$this->load->model('Category');
-		$categories = $this->Category->get_all_categories();
-		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories));
-	}
 	public function shop_showitem($item_id)
 	{
 		$items = $this->Item->getitem_by_id($item_id); 
 		$this->load->view('shop_showitem', array('items'=>$items));
-	}
-	public function searchitem()
-	{
-		$items = $this->Item->searchitem($this->input->get('q'));
-		$this->load->model('Category');
-		$categories = $this->Category->get_all_categories();
-		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories));
 	}
 	// public function sort_items()
 	// {

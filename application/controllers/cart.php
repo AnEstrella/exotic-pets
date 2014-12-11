@@ -1,8 +1,8 @@
 <?php
 /**
  * 		Ecommerce Webiste Project 
- * 
- *		Shopping Cart Controller
+ *  
+ *		Shopping Cart Controller - EPets Commerce Website
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -11,7 +11,46 @@ class Cart extends CI_Controller
 {
 	public function index()
 	{
+		//$this->output->enable_profiler(TRUE);
+		//$this->load->model("CartDB");
 		$this->load->view('shop_cart');
+	}
+
+	public function newitem()
+	{
+		$this->input->post(NULL,TRUE)	;
+		$numitems = $this->input->post("quantity");
+
+		if ($numitems != 0) 
+			$this->addToCart($this->session->userdata('item'), $numitems);
+
+		redirect('index',"refresh");
+	}
+
+	public function addToCart($item, $numitems)
+	{
+		$newitem = array('id' => $item['id'],
+						'name' => $item['name'],
+						'price' => $item['price'],
+						'quantity' => $numitems,
+						'total' => $item['price'] * intval($numitems));
+		
+		$shopping_cart = $this->session->userdata('cart');
+
+		if (!($shopping_cart))
+			$shopping_cart[] = $newitem;
+		else
+			array_push($shopping_cart,$newitem);
+
+		$data["cart"] = $shopping_cart;
+		$total_items = $this->session->userdata("total_items");
+		$this->session->set_userdata("total_items",$total_items + $numitems);
+		$total_price = $this->session->userdata("total_price");
+		$this->session->set_userdata("total_price",$total_price + $newitem['total']);
+
+		$this->session->set_userdata($data);
+
+		return TRUE;
 	}
 
 	public function submitOrder()
@@ -55,4 +94,5 @@ class Cart extends CI_Controller
 		}
 	
 	}
+
 }

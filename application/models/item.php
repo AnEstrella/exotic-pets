@@ -18,9 +18,17 @@ class Item extends CI_Model {
      {
           return $this->db->query("SELECT * FROM items WHERE name LIKE '%$keyword%'")->result_array();
      }
-     function searchitem($keyword)
+     function item_count()
      {
-          return $this->db->query("SELECT COUNT(*) as total FROM items;");
+        return $this->db->query("SELECT COUNT(*) as total FROM items")->result_array();
+     }
+     function category_item_count($id)
+     {
+        return $this->db->query("SELECT COUNT(*) as total_percategory FROM items JOIN categories_has_items ON categories_has_items.item_id = items.id JOIN categories ON categories.id = categories_has_items.category_id WHERE categories.id = {$id}")->result_array();
+     }
+     function items_per_page($startArticle)
+     {
+        return $this->db->query("SELECT * FROM items LIMIT {$startArticle},15")->results_array();
      }
      // function sortitems_by_price()
      // {
@@ -29,10 +37,6 @@ class Item extends CI_Model {
      // function sortitems_by_popularity()
      // {
      //      return $this->db->query("SELECT * FROM items JOIN categories_has_items ON categories_has_items.item_id = items.id JOIN categories ON categories.id = categories_has_items.category_id WHERE categories.id = {$id} ORDER BY total_sold ASC")->result_array();
-     // }
-     // function pagination()
-     // {
-     //    return $this->db-query("SELECT COUNT(*) as total FROM items")->$;
      // }
      // function add_item($item)
      // {
