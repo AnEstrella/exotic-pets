@@ -15,7 +15,9 @@
 				{
 					jQuery.each(products['products'], function(i, val)
 					{
-						$('#table_body').append("<tr><td class='image_column'>" + "<img height='80' width='100' src='" + val.image_url + "'></a></td><td class='small_column'>" + val.id + "</td><td class='small_column'>" + val.name + "</td><td class='small'>" + val.inventory_count + "</td><td class='small'>" + val.total_sold + "</td><td><a href='#'>edit</a>  <a href='#'>remove</a></td></tr>");
+						$('#table_body').append("<tr><td class='image_column'>" + "<img height='80' width='100' src='" + val.image_url + "'></a></td><td class='small_column'>" + val.id + "</td><td class='small_column'>" + val.name + "</td><td class='small'>" + val.inventory_count + "</td><td class='small'>" + val.total_sold + "</td><form method='post' action='/deleteItem/" + val.id + "'><td><input type='submit' class='btn btn-warning' value='Edit'> <input type='submit' class='btn btn-danger' value='Delete'></form>");
+																																																																						
+																																																																							
 					});
 				},
 				"json"
@@ -66,27 +68,26 @@
 						<td><?=$product['name']?></td>
 						<td class='small_column'><?=$product['inventory_count']?></td>
 						<td class='small_column'><?=$product['total_sold']?></td>
-						<td><a href='#'>edit</a>  <a href='#'>remove</a></td>
+						<form method='post' action='<?=base_url("/deleteItem/{$product['id']}")?>'>
+							<td><input type='submit' class='btn btn-warning' value='Edit'>  <input type='submit' class='btn btn-danger' value='Delete'>
+					
+						</form>
 					</tr>
 <?php } ?>
 				</tbody>
 			</table>
 		</div>
-		<div class='row'>
-			<ul class='table_pages'>
-				<li><a href='#'><-</a></li>
-				<li><a href='#'>1</a></li>
-				<li><a href='#'>2</a></li>
-				<li><a href='#'>3</a></li>
-				<li><a href='#'>4</a></li>
-				<li><a href='#'>5</a></li>
-				<li><a href='#'>6</a></li>
-				<li><a href='#'>7</a></li>
-				<li><a href='#'>8</a></li>
-				<li><a href='#'>9</a></li>
-				<li><a href='#'>10</a></li>
-				<li><a href='#'>-></a></li>
-		</div>
+<nav>
+  <ul class="pagination pagination-lg">
+    <li><a href="#"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+  </ul>
+</nav>
 	</div>
 	
 </body>

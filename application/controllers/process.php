@@ -6,15 +6,13 @@ class Process extends CI_Controller {
 	{
 		$this->load->model('Category');
 		$items = $this->Item->get_all_items(); 
-<<<<<<< HEAD
 		$categories = $this->Category->get_all_categories();
 		$this->load->view('shop_products', array('items'=>$items, 'categories'=>$categories));
 		//=======
 		//$this->load->view('signin');
 		//>>>>>>> 23ff019e5d8386126ffc396e59aea94288120601
-=======
+
 		$this->load->view('shop_products', array('items'=>$items));
->>>>>>> 9b24866c3fb98a6f670a6f6f1d933015a4c1652f
 	}
 	public function register()
 	{

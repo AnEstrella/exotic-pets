@@ -42,6 +42,7 @@ $route['default_controller'] = "admin_controller";
 $route['register'] = "/process/register";
 $route['index'] = '/process/index';
 $route['dashboard_orders'] = '/admin_controller/dashboard_orders';
+$route['dashboard_products'] = 'admin_controller/dashboard_products';
 $route['signin'] = '/admin_controller/index';
 $route['admin_login'] = '/admin_controller/admin_login';
 $route['showProducts'] = '/admin_controller/showProducts';
@@ -52,6 +53,7 @@ $route['searchProducts'] = '/admin_controller/searchProducts';
 $route['sortOrders'] = '/admin_controller/sortOrders';
 $route['shop_showproducts/(:num)'] = '/process/shop_products/$1';
 $route['shop_showitem/(:num)'] = '/process/shop_showitem/$1';
+$route['deleteItem/(:num)'] = '/admin_controller/deleteItem/$1';
 $route['404_override'] = '';
 
 
