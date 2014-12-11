@@ -100,9 +100,9 @@
  		<p>
 	 		Sort By:
 		 		<select id="sort_by_dropdown" name="sort_by_dropdown">
+		 			<option value="name">Name</option>
 		 			<option value="price">Price</option>
 		 			<option value="most popular">Most Popular</option>
-		 			<option value="name">Name</option>
 		 		</select>
 		</p>
 		 		<!-- <input type="submit" value="Sort"> -->
