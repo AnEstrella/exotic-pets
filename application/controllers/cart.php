@@ -24,7 +24,7 @@ class Cart extends CI_Controller
 		if ($numitems != 0) 
 			$this->addToCart($this->session->userdata('item'), $numitems);
 
-		redirect('index',"refresh");
+		redirect('/');
 	}
 
 	public function addToCart($item, $numitems)
