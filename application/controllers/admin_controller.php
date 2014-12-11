@@ -36,7 +36,8 @@ class Admin_Controller extends CI_Controller {
 	}
 	public function loadOrders()
 	{
-		$this->load->view('dashboard_orders');
+		$this->load->model('Admin_Model');
+		$this->load->view('dashboard_orders', array('orders' => $this->Admin_Model->show_all_orders()));
 	}
 	public function viewOrder($order_id)
 	{
@@ -84,6 +85,11 @@ class Admin_Controller extends CI_Controller {
 	public function updateStatus($id)
 	{
 		$this->load->model('Admin_Model');
+	}
+		public function logOff()
+	{
+		$this->session->sess_destroy();
+		redirect('/signin');
 	}
 }
 

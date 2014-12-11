@@ -75,7 +75,7 @@
 			<h3>Dashboard</h3>
       		<a href='#' id='orders_link_on_orders'>Orders</a>
       		<a href='/showProducts' id='products_link'>Products</a>
-      		<a href='#' id='logoff_link'>log off</a>
+      		<a href='/logOff' id='logoff_link'>log off</a>
 		</div>
 	</div>
 </nav>
@@ -87,14 +87,6 @@
 				</form>
 				<form method='post' action='/sortOrders' id='order_status_dropdown'>
 					<select class='btn btn-primary' name='order_dropdown' id='order_dropdown'><option value='Show All'>Show All</option><option value='Processing'>Processing</option><option value='Shipped'>Shipped</option><option value='Canceled'>Canceled</option></select>
-					<div class="btn-group"> 
-					    <button class="btn btn-primary dropdown-toggle status" id='order_status_dropdown' data-toggle='dropdown'>Show All <span class='caret'></span></button>
-					    </button>
-					    <ul class="dropdown-menu dropdown-inverse">
-					        <li><a href="#">Shipped</a></li>
-					        <li><a href="#">Processing</a></li>
-					        <li><a href="#">Canceled</a></li>
-					    </ul>
 					</div>
 				</form>
 			</div>
