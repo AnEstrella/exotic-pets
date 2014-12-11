@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `pets_schema` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE  IF NOT EXISTS `pets_schema` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `pets_schema`;
 -- MySQL dump 10.13  Distrib 5.6.19, for osx10.7 (i386)
 --
@@ -92,7 +92,6 @@ CREATE TABLE `categories_has_items` (
 
 LOCK TABLES `categories_has_items` WRITE;
 /*!40000 ALTER TABLE `categories_has_items` DISABLE KEYS */;
-INSERT INTO `categories_has_items` VALUES (9,1),(9,2),(9,3),(9,4),(6,5),(7,6),(8,7);
 /*!40000 ALTER TABLE `categories_has_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,7 +123,7 @@ CREATE TABLE `customer_informations` (
 
 LOCK TABLES `customer_informations` WRITE;
 /*!40000 ALTER TABLE `customer_informations` DISABLE KEYS */;
-INSERT INTO `customer_informations` VALUES (1,'Chris','Jaglois','12345 Test Street','Bellevue','WA','98004',NULL),(2,'Michael','Jordan','999 CodingDojo Lane','Seattle','WA','98111',NULL);
+INSERT INTO `customer_informations` VALUES (1,'Chris','Jaglois','12345 Test Street','Bellevue','WA','98004',NULL),(2,'Michael','Jordan','999 CodingDojo Lane','Seattle','WA','98111',NULL),(3,'Larry','Bird','9876 Countdown Street','Seattle','WA','98112',NULL),(4,'Gary','Payton','65656 Rainier Ave','Seattle','WA','98121',NULL),(5,'Magic','Johnson','722 Magic Lane','Los Angeles','CA','87976',NULL),(6,'Tiger','Woods','79834 Sunny St','NYC','NY','89127',NULL),(7,'Michael','Jackson','666 Thriller Street','Pasadena','CA','78394',NULL),(8,'Arnold','Schwarzenegger','6374 Gettothechoppa','Redmond','WA','98012',NULL),(9,'Donald','Trump','1234 Cool Hair Ln','Hollywood','CA','87932',NULL),(10,'Tom','Cruise','9086 Scientology Street','Bothell','WA','98011',NULL);
 /*!40000 ALTER TABLE `customer_informations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,7 +141,7 @@ CREATE TABLE `customers` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +150,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'testing@test.com','password',NULL,NULL),(2,'mj@air.com','password',NULL,NULL);
+INSERT INTO `customers` VALUES (1,'testing@test.com','password',NULL,NULL),(2,'mj@air.com','password',NULL,NULL),(3,'larry@bird.com','password','2014-12-10 19:00:05',NULL),(4,'gary@payton.com','password','2014-12-10 19:00:26',NULL),(5,'magic@johnson.com','password','2014-12-10 19:00:39',NULL),(6,'tiger@woods.com','password','2014-12-10 19:00:52',NULL),(7,'michael@jackson.com','password','2014-12-10 19:01:01',NULL),(8,'arnold@schwarzenegger.com','password','2014-12-10 19:01:15',NULL),(9,'donald@trump.com','password','2014-12-10 19:01:25',NULL),(10,'tom@cruise.com','password','2014-12-10 19:01:37',NULL);
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +170,7 @@ CREATE TABLE `items` (
   `inventory_count` int(11) DEFAULT NULL,
   `total_sold` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,7 +179,7 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` VALUES (1,'lion',18000.00,'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.','/assets/images/lion.jpeg',4,1),(2,'tarsier',15000.00,'One of the smallest monkeys, coming from the Philippine islands.','/assets/images/tarsier.jpg',12,2),(3,'giraffe',9000.00,'long neck','/assets/images/giraffe.jpg',15,3),(4,'goat',900.00,'pygmy goat','/assets/images/pygmygoat.jpg',9,4),(5,'jellyfish',1000.00,'Sea nettle jellyfish. The average length of this aquatic creature is 6 feet.','/assets/images/seanettlejellyfish.jpg',1,5),(6,'Triceratops',500000.00,'tricerawhat','/assets/images/triceratops.jpg',4,0),(7,'Harpy Eagle',5000.00,'From the Amazon rainforest.','/assets/images/harpyeagle.jpg',22,0),(8,'Blue Tarantula',700.00,'Cobalt Blue Tarantula.','/assets/images/bluetarantula.jpg',31,0),(9,'Green Monkey Frog',450.00,'Don\'t kiss the frog! His skin contains hallucigenic chemicals.','/assets/images/greenmonkeyfrog.jpg',13,0),(10,'Elephant',7000.00,'The largest mammal.','/assets/images/elephant.jpeg',102,0),(11,'King Cobra',3300.00,'Fangs and brown scales.','/assets/kingcobra.jpg',112,0);
+INSERT INTO `items` VALUES (1,'chumlee',9999999.00,'The coolest dog ever','/assets/images/chumlee.jpg',1,0),(2,'tarsier',9000.00,'tarsier','/assets/images/tarsier.jpg',3,3),(3,'giraffe',9000.00,'long neck','/assets/images/giraffe.jpg',15,3),(4,'triceratops',500000.00,'triceratops','/assets/images/triceratops.jpg',23,1),(5,'jellyfish',1000.00,'jellyfish','/assets/images/seanettlejellyfish.jpg',1,5),(6,'goat',500.00,'pygmy goat','/assets/images/pygmygoat.jpg',2,1),(7,'bluetarantula',700.00,'tarantula','/assets/images/bluetarantula.jpg',15,12),(8,'king cobra',3000.00,'king cobra','/assets/images/kingcobra.jpg',10,4),(9,'harpy eagle',4000.00,'harpy eagle','/assets/images/harpyeagle.jpg',3,8),(10,'green monkey frog',8000.00,'green monkey frog','/assets/images/greenmonkeyfrog.jpg',6,15),(11,'elephant',23000.00,'elephant','/assets/images/elephant.jpeg',13,22),(12,'albino squirell',600.00,'squirell','/assets/images/albino_squirell.jpg',45,50),(13,'chameleon',100.00,'chameleon','/assets/images/chameleon.jpg',13,2),(14,'dolphin',2500.00,'dolphin','/assets/images/dolphin.jpg',21,18),(15,'horse',2000.00,'horse','/assets/images/horse.jpeg',31,28),(16,'iguana',200.00,'iguana','/assets/images/iguana.jpeg',85,47),(17,'kitten',50.00,'kitten','/assets/images/kitten.jpg',9,2),(18,'koala',24.00,'koala','/assets/images/koala.jpeg',1,1),(19,'manta ray',4000.00,'manta ray','/assets/images/manta_ray.jpg',43,12),(20,'octopus',5000.00,'octopus','/assets/images/octopus.jpeg',123,43),(21,'orangutan',6000.00,'orangutan','/assets/images/orangutang.jpg',15,12),(22,'panda',9000.00,'panda','/assets/images/panda.jpeg',67,92),(23,'penguin',1800.00,'penguin','/assets/images/penguin.jpg',23,21),(24,'pig',600.00,'pig','/assets/images/pig.jpg',2,4),(25,'puppy',1000.00,'puppy','/assets/images/puppy.jpg',80,100),(26,'red panda',5000.00,'red panda','/assets/images/red_panda.jpg',11,11),(27,'rhinocerous',6600.00,'rhinocerous','/assets/images/rhinocerous.jpg',12,4),(28,'sea turtle',3500.00,'sea turtle','/assets/images/sea_turtle.jpg',9,1),(29,'sloth',11000.00,'sloth','/assets/images/sloth.jpeg',20,19),(30,'T-rex',1000000.00,'t-rex','/assets/images/t-rex.jpeg',1,0),(31,'lion',12000.00,'lion','/assets/images/lion.jpeg',14,2);
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -205,7 +204,7 @@ CREATE TABLE `orders` (
   KEY `fk_orders_shipping_methods1_idx` (`shipping_method_id`),
   CONSTRAINT `fk_orders_customers1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_orders_shipping_methods1` FOREIGN KEY (`shipping_method_id`) REFERENCES `shipping_methods` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -214,7 +213,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,'Shipped',100000.00,'12345 Testing Road',NULL,NULL,1,1),(2,'Processing',250000.00,'12345 Test Road',NULL,NULL,1,2),(4,'Shipped',234.00,'999 CodingDojo Lane',NULL,NULL,2,3);
+INSERT INTO `orders` VALUES (1,'Shipped',100000.00,'12345 Testing Road',NULL,NULL,1,1),(2,'Processing',250000.00,'12345 Test Road',NULL,NULL,1,2),(4,'Shipped',234.00,'999 CodingDojo Lane',NULL,NULL,2,3),(5,'Canceled',12345.00,'5555 Mountain View',NULL,NULL,2,2),(6,'Processing',971234.00,'666 Thriller Street','2014-12-10 19:13:10',NULL,7,1),(7,'Shipped',768234.00,'666 Thriller Street','2014-12-10 19:13:36',NULL,7,3),(8,'Canceled',768234.00,'6374 Gettothechoppa','2014-12-10 19:14:21',NULL,8,3);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,7 +242,7 @@ CREATE TABLE `orders_has_items` (
 
 LOCK TABLES `orders_has_items` WRITE;
 /*!40000 ALTER TABLE `orders_has_items` DISABLE KEYS */;
-INSERT INTO `orders_has_items` VALUES (1,2,2),(1,3,5),(2,4,1),(4,1,4),(4,3,6),(4,5,8);
+INSERT INTO `orders_has_items` VALUES (1,2,2),(1,3,5),(2,4,1),(4,1,4),(4,3,6),(4,5,8),(5,1,1),(5,3,3);
 /*!40000 ALTER TABLE `orders_has_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,4 +280,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-12-10 14:09:22
+-- Dump completed on 2014-12-10 19:34:39
