@@ -39,6 +39,7 @@ class Admin_Model extends CI_Model
 		OR orders.id like '%{$str}%'
 		OR customer_informations.billing_address like '%{$str}%'
 		OR total_price like '%{$str}%'
+		OR zip_code like '%{$str}%'
 		GROUP BY orders.id";
 		return $this->db->query($query)->result_array();
 	}
@@ -62,5 +63,22 @@ class Admin_Model extends CI_Model
 		WHERE status like '%{$str}%'
         GROUP BY orders.id";
 		return $this->db->query($query)->result_array();
+	}
+	function deleteItem($item_id)
+	{
+		$this->db->query("SET FOREIGN_KEY_CHECKS=0;");
+		$query = "DELETE items FROM items WHERE id = '{$item_id}'";
+		$this->db->query($query);
+		$this->db->query("SET FOREIGN_KEY_CHECKS=1;");
+		return $this->db->query($query);
+	}
+	function updateStatus($id)
+	{
+		$query = "UPDATE orders SET status = ? WHERE id= ? and customer_id = ? and shipping_method_id = ?";
+	}
+	function pagination()
+	{
+		$this->load->library('pagination');
+		echo $this->pagination->create_links();
 	}
 }

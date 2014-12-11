@@ -61,9 +61,28 @@ class Admin_Controller extends CI_Controller {
 	public function sortOrders()
 	{
 		$orders = $this->input->post('order_dropdown');
+		if($this->input->post('order_dropdown') == 'Show All')
+		{
+			$this->load->model('Admin_Model');
+			$data['orders'] = $this->Admin_Model->show_all_orders();
+			echo json_encode($data);	
+		}
+		else
+		{
 		$this->load->model('Admin_Model');
 		$data['orders'] = $this->Admin_Model->sortOrders($orders);
 		echo json_encode($data);
+		}
+	}
+	public function deleteItem($id)
+	{
+		$this->load->model('Admin_Model');
+		$delete_item = $this->Admin_Model->deleteItem($id);
+		redirect('/');
+	}
+	public function updateStatus($id)
+	{
+		$this->load->model('Admin_Model');
 	}
 }
 
