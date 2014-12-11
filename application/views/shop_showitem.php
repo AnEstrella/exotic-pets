@@ -30,7 +30,6 @@
 
             	echo $this->session->userdata('total_items') . ")";
 ?>
-
             </a></li>
            </ul>
         </div><!-- /.nav-collapse -->

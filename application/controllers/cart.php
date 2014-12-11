@@ -1,8 +1,8 @@
 <?php
 /**
  * 		Ecommerce Webiste Project 
- * 
- *		Shopping Cart Controller
+ *  
+ *		Shopping Cart Controller - EPets Commerce Website
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');

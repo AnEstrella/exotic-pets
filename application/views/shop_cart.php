@@ -3,6 +3,7 @@
 	// 		Shopping Cart - Ecommerce Website Project - View Classes
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
