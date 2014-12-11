@@ -4,6 +4,12 @@ class Process extends CI_Controller {
 
 	public function index()
 	{
+		if (FALSE == $this->session->userdata('total_items'))
+		{
+            $this->session->set_userdata('total_items',0);
+            $this->session->set_userdata('total_price',0);
+        }
+        		
 		$items = $this->Item->get_all_items(); 
 		$this->load->model('Category');
 		$categories = $this->Category->get_all_categories();
